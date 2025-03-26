@@ -143,7 +143,7 @@ nav ul li a ion-icon {
 .container-judul {
     position: relative;
     margin-top: 150px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     text-align: center;
     height: auto;
     display: flex;
@@ -255,13 +255,14 @@ nav ul li a ion-icon {
 
 .container-isi {
     position: relative;
+    background-color: rgba(255, 0, 0, 0);
     width: 100%;
-    height: 50vh; 
+    height: auto; 
     display: flex;
     gap: 0px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 150px;
 
     /* Animasi */
     opacity: 0;
@@ -287,7 +288,7 @@ nav ul li a ion-icon {
     position: relative;
     height: 500px;
     width: 420px;
-    margin: 0px 30px;
+    margin: 0px 10px 0px 30px;
     font-family: "acorn", sans-serif;
     background-color: #d0a6f2;
     border: none;
@@ -415,13 +416,192 @@ nav ul li a ion-icon {
 }
 
 
+/*====================================== isi 2 ====================================*/
+
+.container-isi2 {
+    position: relative;
+    background-color: rgba(255, 0, 0, 0);
+    width: 100%;
+    height: auto; 
+    display: flex;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
+
+    /* Animasi */
+    opacity: 0;
+    transform: translateY(-30px); 
+    animation: fadeDown 0.3s ease-out forwards;
+    animation-delay: 0.5s; 
+}
+
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+
+
+.big-btn3 {
+    position: relative;
+    height: 500px;
+    width: 1300px;
+    margin: 0px 30px;
+    font-family: "acorn", sans-serif;
+    background-color: #e8b89c;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(71, 70, 70);
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 20px;
+    text-align: right;
+    overflow: hidden;
+}
+
+
+.big-btn3:hover,
+.big-btn3:active {
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); 
+    transition: box-shadow 0.3s ease-in-out;
+}
 
 
 
 
+.big-btn3 img {
+    position: relative;
+    margin-top: 30px;
+    width: 200%; 
+    max-width: none; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 10px;
+    transform: translateX(30%); 
+    transition: transform 0.5s ease-in-out;
+}
 
 
 
+.big-btn3:hover img,
+.big-btn3:active img {
+    transform: translateX(30%) translateY(10px); /* Gambar turun sedikit */
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-content3 {
+    position: relative; 
+    text-align: right; 
+    width: 100%; 
+    padding-top: 30px;
+    padding-right: 20px;
+    transition: transform 0.5s ease-in-out;
+    z-index: 2;
+}
+
+
+
+/* Efek untuk konten */
+.big-btn3:hover .btn-content3,
+.big-btn3:active .btn-content3 {
+    transform: translateY(-10px); /* Konten naik sedikit */
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.big-btn3 .btn-title3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.big-btn3 .btn-subtitle3 {
+    font-size: 16px;
+    font-family: 'gt', sans-serif;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+
+
+
+/*====================================== judul 2 ====================================*/
+
+.container-judul2 {
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0); 
+}
+
+
+/* Keyframes animasi Fade-Down */
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Mulai lebih tinggi */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Kembali ke posisi normal */
+    }
+}
+
+
+.container-judul2 h1 {
+    position: relative;
+    font-size: clamp(40px, 6vw, 80px);
+    background-color: rgba(255, 0, 0, 0);
+    font-family: "acorn", sans-serif;
+    font-weight: bold;
+    color: var(--hijau);
+    line-height: 1.2;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    
+    /* Animasi */
+    opacity: 0;
+    transform: translateY(-20px); /* Mulai dari atas */
+    animation: fadeDown 0.4s ease-out forwards;
+}
+
+
+.container-judul2 p {
+    position: relative;
+    font-size: clamp(14px, 2vw, 16px);
+    font-family: "poppins", sans-serif;
+    font-weight: 200;
+    color: #4b5563;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: 50px;
+    margin-right: 50px;
+    z-index: 10;
+
+    /* Animasi */
+    opacity: 0;
+    transform: translateY(-20px); /* Mulai dari atas */
+    animation: fadeDown 0.4s ease-out forwards;
+    animation-delay: 0.3s; /* P muncul setelah h1 */
+}
 
 
 
@@ -446,6 +626,68 @@ nav ul li a ion-icon {
 
 
     @media (max-width: 767px) {
+            /* Navbar Styles */
+            nav {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--BlurNavbar);
+                padding: 8px 8px;
+                border-radius: 30px;
+                box-shadow: none;
+                z-index: 1000;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                padding: 0;
+                margin: 0;
+            }
+
+            nav ul li {
+                margin: 0 5px; /* Adjust margin for smaller screens */
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: var(--HijauTua);
+                font-size: 12px;
+                font-weight: normal;
+                padding: 8px 10px; /* Adjust padding for smaller screens */
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                transition: background 0.3s ease-in-out;
+            }
+
+            /* Active Background */
+            .active-bg {
+                position: absolute;
+                height: 100%;
+                width: 60px; /* Adjust width for smaller screens */
+                background-color: rgba(255, 255, 255, 0.679);
+                box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+                border-radius: 20px;
+                transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+                z-index: 1;
+            }
+
+            /* Active Button Styling */
+            nav ul li.active a {
+                background-color: none;
+                padding: 10px 10px; /* Adjust padding for smaller screens */
+                box-shadow: none;
+            }
+
+            /* Icon Styles */
+            nav ul li a ion-icon {
+                margin-right: 6px;
+                font-size: 12px;
+                color: #3e4342;
+            }
 
 
         .rainbow {
@@ -476,7 +718,7 @@ nav ul li a ion-icon {
         .container-judul {
             position: relative;
             margin-top: 150px;
-            margin-bottom: 100px;
+            margin-bottom: -70px;
             text-align: center;
             height: auto;
             display: flex;
@@ -488,7 +730,48 @@ nav ul li a ion-icon {
         
 
 
+        .container-judul h1 {
+            position: relative;
+            font-size: clamp(35px, 5vw, 60px); /* Ukuran minimal 32px, maksimal 64px */
+            font-family: "acorn", sans-serif;
+            font-weight: bold;
+            color: var(--hijau);
+            line-height: 1.2;
+            text-rendering: optimizeLegibility;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        
+        .container-judul p {
+            position: relative;
+            font-size: clamp(14px, 2vw, 20px); /* Ukuran minimal 14px, maksimal 18px */
+            font-family: 'Poppins', sans-serif;
+            color: #4b5563;
+            margin-top: 50px;
+            max-width: 600px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
 
+
+
+        .Star-png1 {
+            position: absolute;
+            top: 2%; 
+            margin-right: 10%;
+            right: 0;
+            width: clamp(25px, 5vw, 50px); /* Minimal 30px, Maksimal 80px */
+            height: auto;
+        }
+        
+        .Star-png2 {
+            position: absolute;
+            bottom: 45%;
+            left: 0;
+            margin-left: 4%;
+            width: clamp(25px, 5vw, 50px); 
+            height: auto;
+        }
 
 
 
@@ -499,16 +782,18 @@ nav ul li a ion-icon {
     
         .container-isi {
             position: relative;
+            background-color: rgba(255, 0, 0, 0);
             flex-direction: column; /* Mengubah flex jadi column */
             align-items: center; /* Supaya tombol tetap rata tengah */
             gap: 50px; /* Jarak antar tombol */
+            margin-bottom: 50px;
         }
 
         .big-btn,
         .big-btn2 {
             margin: 0px 30px;
             width: auto; /* Responsif */
-            min-height: 320px; /* Pastikan cukup tinggi */
+            height: 320px; /* Pastikan cukup tinggi */
             overflow: hidden; /* Hindari elemen keluar */
             position: relative;
         }
@@ -551,68 +836,6 @@ nav ul li a ion-icon {
 
 
 
-    /* Navbar Styles */
-    nav {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--BlurNavbar);
-        padding: 8px 8px;
-        border-radius: 30px;
-        box-shadow: none;
-        z-index: 1000;
-    }
-
-    nav ul {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-    }
-
-    nav ul li {
-        margin: 0 5px; /* Adjust margin for smaller screens */
-    }
-
-    nav ul li a {
-        text-decoration: none;
-        color: var(--HijauTua);
-        font-size: 12px;
-        font-weight: normal;
-        padding: 8px 10px; /* Adjust padding for smaller screens */
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        transition: background 0.3s ease-in-out;
-    }
-
-    /* Active Background */
-    .active-bg {
-        position: absolute;
-        height: 100%;
-        width: 60px; /* Adjust width for smaller screens */
-        background-color: rgba(255, 255, 255, 0.679);
-        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-        border-radius: 20px;
-        transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
-        z-index: 1;
-    }
-
-    /* Active Button Styling */
-    nav ul li.active a {
-        background-color: none;
-        padding: 10px 10px; /* Adjust padding for smaller screens */
-        box-shadow: none;
-    }
-
-    /* Icon Styles */
-    nav ul li a ion-icon {
-        margin-right: 6px;
-        font-size: 12px;
-        color: #3e4342;
-    }
 
 
 
@@ -620,60 +843,61 @@ nav ul li a ion-icon {
 
 
 
+        .container-isi2 {
+            position: relative;
+            background-color: rgba(255, 0, 0, 0);
+            flex-direction: column; /* Mengubah flex jadi column */
+            align-items: center; /* Supaya tombol tetap rata tengah */
+            gap: 50px; /* Jarak antar tombol */
+            margin-bottom: 50px;
+        }
 
-
-
-
-
-
-    .container-judul h1 {
-        position: relative;
-        font-size: clamp(35px, 5vw, 60px); /* Ukuran minimal 32px, maksimal 64px */
-        font-family: "acorn", sans-serif;
-        font-weight: bold;
-        color: var(--hijau);
-        line-height: 1.2;
-        text-rendering: optimizeLegibility;
-        margin-left: 30px;
-        margin-right: 30px;
-    }
+        .big-btn3 {
+            margin: 0px 30px;
+            width: auto; /* Responsif */
+            height: 320px; /* Pastikan cukup tinggi */
+            overflow: hidden; /* Hindari elemen keluar */
+            position: relative;
+        }
+        
+        /* Atur gambar */
+        .big-btn3 img{
+            position: relative; /* Agar bisa digeser */
+            top: 0px;
+            margin-top: 30px;
+            left: 0;
+            width: 150%; /* Lebih besar agar sebagian terpotong */
+            max-width: none; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 10px;
+        }
     
-    .container-judul p {
-        position: relative;
-        font-size: clamp(14px, 2vw, 20px); /* Ukuran minimal 14px, maksimal 18px */
-        font-family: 'Poppins', sans-serif;
-        color: #4b5563;
-        margin-top: 50px;
-        max-width: 600px;
-        margin-left: 30px;
-        margin-right: 30px;
-    }
+        /* Khusus untuk perbedaan posisi gambar */
+        .big-btn3 img {
+            transform: translateX(30%); /* Geser ke kiri */
+        }
+        
+        
+        /* Posisi teks */
+        .btn-content3 {
+            position: relative; /* Pastikan di atas gambar */
+            top: 0px;
+            right: 0px;
+            text-align: right; 
+            width: 100%; 
+            z-index: 2;
+        }
 
 
 
-    .Star-png1 {
-        position: absolute;
-        top: 2%; 
-        margin-right: 10%;
-        right: 0;
-        width: clamp(25px, 5vw, 50px); /* Minimal 30px, Maksimal 80px */
-        height: auto;
-    }
-    
-    .Star-png2 {
-        position: absolute;
-        bottom: 45%;
-        left: 0;
-        margin-left: 4%;
-        width: clamp(25px, 5vw, 50px); 
-        height: auto;
-    }
 
-    
+
+
+
 
 
 }
-
 
 
 
