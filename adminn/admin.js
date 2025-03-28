@@ -80,3 +80,124 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", handleNavScroll);
     handleNavScroll();
 });
+
+
+
+
+
+
+
+
+
+/*====================================== menampilkan container release ====================================*/
+function toggleRelease(event) {
+    event.preventDefault(); // Mencegah link berpindah halaman
+    let container = document.querySelector('.container-release');
+
+    // Cek apakah elemen sedang ditampilkan atau tidak
+    if (container.classList.contains('show')) {
+        container.classList.remove('show'); // Sembunyikan jika sudah terbuka
+    } else {
+        container.classList.add('show'); // Tampilkan jika tertutup
+    }
+}
+
+
+
+
+
+
+
+
+/*====================================== Night Mode ====================================*/
+document.addEventListener("DOMContentLoaded", function () {
+    const lines = document.querySelectorAll(".line-night");
+    const activeControl = document.querySelector(".active-control");
+    const icon = activeControl.querySelector("ion-icon");
+
+    // Ambil jam saat ini
+    const now = new Date();
+    const currentHour = now.getHours(); // Mendapatkan angka jam 0-23
+
+    // Cari elemen berdasarkan ID waktu yang sesuai
+    const currentLine = document.getElementById(`night${currentHour}`) || document.getElementById(`afternoon${currentHour}`);
+
+    // Jika elemen ditemukan, munculkan active control di atasnya
+    if (currentLine) {
+        moveActiveControl(currentLine, false);
+    }
+
+    // Tambahkan event listener untuk setiap garis
+    lines.forEach(line => {
+        line.addEventListener("click", function () {
+            if (activeControl.classList.contains("show")) {
+                activeControl.classList.add("hide");
+
+                setTimeout(() => {
+                    moveActiveControl(this);
+                }, 300); // Tunggu animasi fade-down sebelum pindah
+            } else {
+                moveActiveControl(this);
+            }
+        });
+    });
+
+
+
+
+
+    
+    // Saat layar diciutkan/diperbesar, active control langsung berpindah
+    window.addEventListener("resize", function () {
+        const activeLine = document.querySelector(".line-night.active");
+        if (activeLine) {
+            moveActiveControl(activeLine, true);
+        }
+    });
+
+
+
+
+
+
+    function moveActiveControl(line, instant = false) {
+        // Reset semua garis agar kembali pendek
+        lines.forEach(l => l.classList.remove("active"));
+
+        // Aktifkan garis yang diklik atau sesuai waktu
+        line.classList.add("active");
+
+        // Pindahkan active control
+        const lineRect = line.getBoundingClientRect();
+        const containerRect = document.querySelector(".line-container").getBoundingClientRect();
+        activeControl.style.left = `${lineRect.left - containerRect.left + lineRect.width / 2 - 25}px`;
+
+        // **Ganti ikon berdasarkan ID line**
+        if (line.id.includes("night")) {
+            icon.setAttribute("name", "moon");
+        } else {
+            icon.setAttribute("name", "sunny");
+        }
+
+        // **Tampilkan active control**
+        if (!instant) {
+            activeControl.classList.remove("hide");
+            activeControl.classList.add("show");
+        } else {
+            // Jika instant (resize), pindahkan langsung tanpa animasi fade
+            activeControl.style.transition = "none";
+            requestAnimationFrame(() => {
+                activeControl.style.transition = "";
+            });
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
