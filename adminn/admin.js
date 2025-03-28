@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const lines = document.querySelectorAll(".line-night");
     const activeControl = document.querySelector(".active-control");
     const icon = activeControl.querySelector("ion-icon");
+    const root = document.documentElement; // Mengambil elemen root untuk CSS
 
     // Ambil jam saat ini
     const now = new Date();
@@ -142,11 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-
-
-
-
-    
     // Saat layar diciutkan/diperbesar, active control langsung berpindah
     window.addEventListener("resize", function () {
         const activeLine = document.querySelector(".line-night.active");
@@ -154,11 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
             moveActiveControl(activeLine, true);
         }
     });
-
-
-
-
-
 
     function moveActiveControl(line, instant = false) {
         // Reset semua garis agar kembali pendek
@@ -172,11 +163,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const containerRect = document.querySelector(".line-container").getBoundingClientRect();
         activeControl.style.left = `${lineRect.left - containerRect.left + lineRect.width / 2 - 25}px`;
 
-        // **Ganti ikon berdasarkan ID line**
+        // **Ganti ikon dan warna root berdasarkan ID line**
         if (line.id.includes("night")) {
             icon.setAttribute("name", "moon");
+            root.classList.add("night-mode"); // **Menambahkan class night-mode**
         } else {
             icon.setAttribute("name", "sunny");
+            root.classList.remove("night-mode"); // **Menghapus class night-mode**
         }
 
         // **Tampilkan active control**
@@ -192,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
 
 
 
