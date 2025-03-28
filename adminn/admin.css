@@ -811,11 +811,12 @@ nav ul li a ion-icon {
     border-radius: 10px;
     z-index: 100;
     width: max-content;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s linear;
+    transform: translateY(-5px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s linear;
 }
 
-/* Fade Down - Saat muncul */
-.link-Release:hover + .container-release {
+/* Saat di-hover, tampilkan container */
+.footer-devided1:hover .container-release {
     opacity: 1;
     visibility: visible;
     transform: translateY(5px);
@@ -827,6 +828,13 @@ nav ul li a ion-icon {
     transform: translateY(-5px);
     transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s linear;
     visibility: hidden;
+}
+
+/* Tambahkan class 'show' agar bisa ditampilkan saat diklik */
+.container-release.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(5px);
 }
 
 .container-footer-devided {
@@ -844,6 +852,14 @@ nav ul li a ion-icon {
     padding: 10px;
     text-align: left;
     position: relative; /* Penting agar .container-release bisa absolute di dalamnya */
+}
+
+
+.footer-devided1 ion-icon {
+    font-size: 16px;
+    vertical-align: middle; /* Pastikan ikon sejajar dengan teks */
+    display: inline-flex;
+    align-items: center;
 }
 
 .link-Release {
@@ -882,7 +898,7 @@ nav ul li a ion-icon {
 
 .footer-links {
     color: #4e5b57;
-    font-weight: 600;
+    font-weight: 520;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -890,15 +906,26 @@ nav ul li a ion-icon {
 
 .footer-links li {
     margin-bottom: 20px; /* Beri jarak antar link */
+    display: flex;
+    align-items: center;
 }
 
 .footer-links a {
     text-decoration: none;
     color: #3b4d47; /* Warna abu-abu kehijauan */
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara ikon dan teks */
 }
 
+.footer-links ion-icon {
+    font-size: 16px;;
+}
+
+.footer-message:hover ion-icon ,
 .footer-links a:hover {
+    color: var(--hijau);
     text-decoration: none; /* Efek saat hover */
 }
 
@@ -925,10 +952,19 @@ nav ul li a ion-icon {
 .footer-message {
     text-decoration: none;
     color: #4e5b57;
-    font-weight: 600;
+    font-weight: 530;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Jarak antara ikon dan teks */
 }
 
+.footer-message ion-icon {
+    font-size: 16px;
+    color: #4e5b57;
+}
+
+.footer-message:hover ion-icon,
 .footer-message:hover {
     color: var(--hijau);
     text-decoration: none; /* Efek saat di-hover */
@@ -939,6 +975,149 @@ nav ul li a ion-icon {
 
 
 
+/*====================================== NaightMenu ====================================*/
+
+.container-Night {
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 0px;
+}
+
+.night {
+    text-align: center;
+    padding: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.line-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    height: 60px;
+    position: relative;
+}
+
+.line-night {
+    position: relative;
+    width: 100px; /* Hitbox lebih lebar */
+    height: 20px; /* Default pendek */
+    transition: height 0.3s ease;
+    cursor: pointer;
+}
+
+/* Garis default dibuat dengan ::before */
+.line-night::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px; /* Ketebalan garis */
+    height: 100%;
+    background-color: #2F4F4F; /* Warna default */
+    transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+/* Garis dengan ID "night" sedikit transparan */
+#night0::before,
+#night1::before,
+#night2::before,
+#night3::before,
+#night4::before,
+#night17::before,
+#night18::before,
+#night19::before,
+#night20::before,
+#night21::before,
+#night22::before,
+#night23::before {
+    background-color: rgba(47, 79, 79, 0.5);
+}
+
+/* Efek hover: Garis yang dihover paling tinggi */
+.line-night:hover {
+    height: 60px;
+}
+
+.line-night:hover::before {
+    height: 100%;
+}
+
+/* Garis di kiri dan kanan menjadi setengah tinggi */
+.line-night:hover + .line-night,
+.line-night:has(+ .line-night:hover) {
+    height: 40px;
+}
+
+.line-night:hover + .line-night::before,
+.line-night:has(+ .line-night:hover)::before {
+    height: 100%;
+}
+
+/* Garis lainnya tetap pendek */
+.line-container:hover .line-night:not(:hover):not(:hover + .line-night):not(:has(+ .line-night:hover)) {
+    height: 20px;
+}
+
+.line-container:hover .line-night:not(:hover):not(:hover + .line-night):not(:has(+ .line-night:hover))::before {
+    height: 100%;
+}
+
+/* Garis yang diklik tetap panjang */
+.line-night.active {
+    height: 60px !important;
+}
+
+.line-night.active::before {
+    height: 100% !important;
+}
+
+/* Active Control (ikon muncul di atas garis yang diklik) */
+.active-control {
+    position: absolute;
+    visibility: hidden;
+    bottom: 70px;
+    width: 50px;
+    height: 50px;
+    background-color: #005f4b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.active-control ion-icon {
+    font-size: 24px;
+    color: white;
+}
+
+/* Saat active-control muncul */
+.active-control.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Saat active-control menghilang */
+.active-control.hide {
+    opacity: 0;
+    transform: translateY(10px);
+}
 
 
 
@@ -1333,6 +1512,28 @@ nav ul li a ion-icon {
             text-align: left;
         }
         
+
+
+
+
+
+
+
+
+
+
+        .container-Night {
+            position: relative;
+            margin-top: 150px;
+            margin-bottom: 50px;
+            width: 90%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 0, 0, 0);
+            padding: 0px;
+        }
 
 
 
