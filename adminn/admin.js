@@ -88,28 +88,128 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             activeBg.style.opacity = "1";
         }, 50);
-    }
+    }    navLinks.forEach((li) => {
+        li.addEventListener("click", function () {
+            document.querySelector("nav ul li.active")?.classList.remove("active");
+            this.classList.add("active");
+            moveActiveBg(this);
+        });
+    });
+
+    // Efek muncul dengan opacity saat halaman pertama kali dimuat
+    window.addEventListener("load", function () {
+        const activeLi = document.querySelector("nav ul li.active");
+        if (activeLi) {
+            moveActiveBg(activeLi, false);
+        } else {
+            console.warn("Tidak ada elemen <li> dengan class 'active' ditemukan.");
+        }
+
+        // Tambahkan efek fade-in setelah load
+        setTimeout(() => {
+            activeBg.style.opacity = "1";
+        }, 300); // Delay agar efek lebih natural
+    });
+
+    // Menyesuaikan kembali saat jendela di-resize tanpa animasi
+    window.addEventListener("resize", function () {
+        moveActiveBg(document.querySelector("nav ul li.active"), false);
+    });
+});
 
 
-        // Efek muncul dengan opacity saat halaman pertama kali dimuat
-        window.addEventListener("load", function () {
-            const activeLi = document.querySelector("nav ul li.active");
-            if (activeLi) {
-                moveActiveBg(activeLi, false);
-            } else {
-                console.warn("Tidak ada elemen <li> dengan class 'active' ditemukan.");
-            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('nav ul li');
+    const activeBg = document.querySelector('.active-bg');
+    const footer = document.querySelector('.container-footer');
+    const nightContainer = document.querySelector('.container-Night');
+    const nightToggle = document.querySelector('.night-toggle');
     
-            // Tambahkan efek fade-in setelah load
+    // Initialize animations with delays
+    setTimeout(() => {
+        footer.classList.add('animate');
+        setTimeout(() => {
+            nightContainer.classList.add('animate');
+        }, 300); // Delay 300ms antara footer dan night container
+    }, 500);
+    
+    // Navigation click handler
+    navItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            navItems.forEach(navItem => navItem.classList.remove('active'));
+            
+            // Add active class to clicked item
+            this.classList.add('active');
+            
+            // Move active background
+            activeBg.style.transform = `translateX(${index * 100}%)`;
+            
+            // Trigger animation for footer and night container with staggered delays
+            footer.style.animation = 'none';
+            nightContainer.style.animation = 'none';
+            void footer.offsetWidth; // Trigger reflow
+            void nightContainer.offsetWidth; // Trigger reflow
+            
+            // Reset opacity sebelum animasi baru dimulai
+            footer.style.opacity = '0';
+            nightContainer.style.opacity = '0';
+            
+            // Animasi footer dengan delay 0.3s
             setTimeout(() => {
-                activeBg.style.opacity = "1";
-            }, 300); // Delay agar efek lebih natural
+                footer.style.animation = 'fadeDown 1s ease-out forwards';
+            }, 300);
+            
+            // Animasi night container dengan delay 0.6s (0.3s setelah footer)
+            setTimeout(() => {
+                nightContainer.style.animation = 'fadeDown 1s ease-out forwards';
+            }, 600);
         });
+    });
     
-        // Menyesuaikan kembali saat jendela di-resize tanpa animasi
-        window.addEventListener("resize", function () {
-            moveActiveBg(document.querySelector("nav ul li.active"), false);
-        });
+    // Night mode toggle
+    nightToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        document.body.classList.toggle('night-mode');
+        
+        // Trigger animation for footer and night container with staggered delays
+        footer.style.animation = 'none';
+        nightContainer.style.animation = 'none';
+        void footer.offsetWidth;
+        void nightContainer.offsetWidth;
+        
+        // Reset opacity sebelum animasi baru dimulai
+        footer.style.opacity = '0';
+        nightContainer.style.opacity = '0';
+        
+        // Animasi footer dengan delay 0.3s
+        setTimeout(() => {
+            footer.style.animation = 'fadeDown 1s ease-out forwards';
+        }, 300);
+        
+        // Animasi night container dengan delay 0.6s (0.3s setelah footer)
+        setTimeout(() => {
+            nightContainer.style.animation = 'fadeDown 1s ease-out forwards';
+        }, 600);
+    });
 });
 
 
@@ -248,12 +348,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
-
-
-
-
-
-
 
 
 
