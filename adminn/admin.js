@@ -1,5 +1,4 @@
 /*====================================== Navigasi Navbar utama ====================================*/
-
 document.addEventListener("DOMContentLoaded", function() {
     // Get all elements
     const navLinks = document.querySelectorAll("nav ul li");
@@ -91,10 +90,26 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 50);
     }
 
-    // Handle window resize
-    window.addEventListener("resize", function() {
-        moveActiveBg(document.querySelector("nav ul li.active"), false);
-    });
+
+        // Efek muncul dengan opacity saat halaman pertama kali dimuat
+        window.addEventListener("load", function () {
+            const activeLi = document.querySelector("nav ul li.active");
+            if (activeLi) {
+                moveActiveBg(activeLi, false);
+            } else {
+                console.warn("Tidak ada elemen <li> dengan class 'active' ditemukan.");
+            }
+    
+            // Tambahkan efek fade-in setelah load
+            setTimeout(() => {
+                activeBg.style.opacity = "1";
+            }, 300); // Delay agar efek lebih natural
+        });
+    
+        // Menyesuaikan kembali saat jendela di-resize tanpa animasi
+        window.addEventListener("resize", function () {
+            moveActiveBg(document.querySelector("nav ul li.active"), false);
+        });
 });
 
 
