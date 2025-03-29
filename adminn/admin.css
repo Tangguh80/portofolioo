@@ -12,6 +12,32 @@
     font-style: normal;
 }
 
+
+.work {
+    position: relative;
+    display: none ;
+}
+
+.about {
+    position: relative;
+    display: none ;
+}
+
+.skill {
+    position: relative;
+    display: none ;
+}
+
+.kontak {
+    position: relative;
+    display: none ;
+}
+
+.active-content {
+    display: block !important;
+}
+
+
 body {
     width: 100%; /* Lebar 100% dari viewport */
     height: 100vh;
@@ -1042,6 +1068,7 @@ nav ul li a ion-icon {
     height: 20px; /* Default pendek */
     transition: height 0.3s ease;
     cursor: pointer;
+    overflow: visible;
 }
 
 /* Garis default dibuat dengan ::before */
