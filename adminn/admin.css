@@ -13,13 +13,17 @@
 }
 
 
+
+
+
 .work {
     position: relative;
-    display: none ;
+    display: block ;
 }
 
-.about {
+#about {
     position: relative;
+    background-color: rgba(102, 51, 153, 0);
     display: none ;
 }
 
@@ -36,6 +40,7 @@
 .active-content {
     display: block !important;
 }
+
 
 
 body {
@@ -837,6 +842,17 @@ nav ul li a ion-icon {
 
 /*====================================== Footer ====================================*/
 
+@keyframes fadeDownFooter {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Mulai lebih tinggi */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Kembali ke posisi normal */
+    }
+}
+
 .container-footer {
     position: relative;
     margin-top: 200px;
@@ -848,6 +864,11 @@ nav ul li a ion-icon {
     justify-content: center;
     align-items: center;
     background-color: rgba(196, 243, 40, 0);
+
+    opacity: 0;
+    transform: translateY(-20px); /* Mulai dari atas */
+    animation: fadeDownFooter 0.4s ease-out forwards;
+    animation-delay: 0.5s; /* P muncul setelah h1 */
 }
 
 .container-release {
@@ -1029,6 +1050,8 @@ nav ul li a ion-icon {
 
 /*====================================== NaightMenu ====================================*/
 
+
+
 .container-Night {
     position: relative;
     margin-top: 150px;
@@ -1040,6 +1063,11 @@ nav ul li a ion-icon {
     align-items: center;
     background-color: rgba(255, 0, 0, 0);
     padding: 0px;
+
+    opacity: 0;
+    transform: translateY(-20px); /* Mulai dari atas */
+    animation: fadeDownFooter 0.8s ease-out forwards;
+    animation-delay: 1s; /* P muncul setelah h1 */
 }
 
 .night {
@@ -1064,26 +1092,26 @@ nav ul li a ion-icon {
 
 .line-night {
     position: relative;
-    width: 100px; /* Hitbox lebih lebar */
-    height: 20px; /* Default pendek */
+    width: 100%;
+    height: 20px;
     transition: height 0.3s ease;
     cursor: pointer;
     overflow: visible;
+    flex-grow: 1;
+    margin: 0 1px;
 }
 
-/* Garis default dibuat dengan ::before */
 .line-night::before {
     content: "";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 3px; /* Ketebalan garis */
+    width: 3px;
     height: 100%;
-    background-color: var(--hijauTua); /* Warna default */
+    background-color: var(--hijauTua);
     transition: height 0.3s ease, background-color 0.3s ease;
 }
 
-/* Garis dengan ID "night" sedikit transparan */
 #night0::before,
 #night1::before,
 #night2::before,
@@ -1099,7 +1127,6 @@ nav ul li a ion-icon {
     background-color: rgba(47, 79, 79, 0.551);
 }
 
-/* Efek hover: Garis yang dihover paling tinggi */
 .line-night:hover {
     height: 60px;
 }
@@ -1108,7 +1135,6 @@ nav ul li a ion-icon {
     height: 100%;
 }
 
-/* Garis di kiri dan kanan menjadi setengah tinggi */
 .line-night:hover + .line-night,
 .line-night:has(+ .line-night:hover) {
     height: 40px;
@@ -1119,7 +1145,6 @@ nav ul li a ion-icon {
     height: 100%;
 }
 
-/* Garis lainnya tetap pendek */
 .line-container:hover .line-night:not(:hover):not(:hover + .line-night):not(:has(+ .line-night:hover)) {
     height: 20px;
 }
@@ -1128,10 +1153,9 @@ nav ul li a ion-icon {
     height: 100%;
 }
 
-/* Garis yang diklik tetap panjang */
 .line-night.active {
     height: 60px !important;
-    transform: translateY(-10px); /* Sedikit terangkat ke atas */
+    transform: translateY(-10px);
     transition: transform 0.3s ease, height 0.3s ease;
 }
 
@@ -1139,8 +1163,6 @@ nav ul li a ion-icon {
     height: 100% !important;
 }
 
-
-/* Active Control (ikon muncul di atas garis yang diklik) */
 .active-control {
     position: absolute;
     visibility: hidden;
@@ -1155,6 +1177,7 @@ nav ul li a ion-icon {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
 }
 
 .active-control ion-icon {
@@ -1162,14 +1185,12 @@ nav ul li a ion-icon {
     color: var(--iconnightmode);
 }
 
-/* Saat active-control muncul */
 .active-control.show {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Saat active-control menghilang */
 .active-control.hide {
     opacity: 0;
     transform: translateY(10px);
@@ -1581,6 +1602,30 @@ nav ul li a ion-icon {
             align-items: center;
             background-color: rgba(255, 0, 0, 0);
             padding: 0px;
+        }
+
+
+        .active-control {
+            position: absolute;
+            margin-left: 5px;
+            visibility: hidden;
+            bottom: 80px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--hijauTua);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .active-control ion-icon {
+            font-size: 20px;
+            color: var(--iconnightmode);
         }
 
 
