@@ -1,17 +1,46 @@
 /*====================================== Navigasi Navbar utama ====================================*/
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all elements
     const navLinks = document.querySelectorAll("nav ul li");
     const activeBg = document.querySelector(".active-bg");
+    const contentContainers = {
+        work: document.querySelector(".Work"),
+        about: document.querySelector(".About"),
+        skill: document.querySelector(".Skiil"),
+        contact: document.querySelector(".contact")
+    };
 
+    // Hide all containers immediately (except Work)
+    Object.keys(contentContainers).forEach(key => {
+        if (contentContainers[key]) {
+            contentContainers[key].style.display = key === 'work' ? 'block' : 'none';
+        }
+    });
+
+    // Hide active-bg initially
+    activeBg.style.opacity = "0";
+
+    // Function to update active content
+    function updateContentDisplay(activeClass) {
+        // First hide all containers
+        Object.values(contentContainers).forEach(container => {
+            if (container) container.style.display = 'none';
+        });
+        
+        // Then show only the active one
+        const activeContainer = contentContainers[activeClass.toLowerCase()];
+        if (activeContainer) {
+            activeContainer.style.display = 'block';
+        }
+    }
+
+    // Function to move active background
     function moveActiveBg(target, animate = true) {
         if (!target) return;
 
         requestAnimationFrame(() => {
             setTimeout(() => {
-                const targetRect = target.getBoundingClientRect();
-                const navRect = target.parentElement.getBoundingClientRect();
-
                 if (!animate) {
                     activeBg.style.transition = "none";
                 } else {
@@ -30,34 +59,53 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    navLinks.forEach((li) => {
-        li.addEventListener("click", function () {
-            document.querySelector("nav ul li.active")?.classList.remove("active");
+    // Click handler for nav items
+    navLinks.forEach(li => {
+        li.addEventListener("click", function() {
+            // Remove active class from all nav items
+            navLinks.forEach(item => item.classList.remove("active"));
+            
+            // Add active class to clicked item
             this.classList.add("active");
+            
+            // Update UI
             moveActiveBg(this);
+            const activeContent = this.textContent.trim();
+            updateContentDisplay(activeContent);
         });
     });
 
-    // Efek muncul dengan opacity saat halaman pertama kali dimuat
-    window.addEventListener("load", function () {
-        const activeLi = document.querySelector("nav ul li.active");
-        if (activeLi) {
-            moveActiveBg(activeLi, false);
-        } else {
-            console.warn("Tidak ada elemen <li> dengan class 'active' ditemukan.");
+    // Initialize with Work as default
+    const defaultNavItem = document.querySelector("nav ul li.active") || document.querySelector("nav ul li:first-child");
+    if (defaultNavItem) {
+        if (!defaultNavItem.classList.contains('active')) {
+            defaultNavItem.classList.add('active');
         }
-
-        // Tambahkan efek fade-in setelah load
+        
+        moveActiveBg(defaultNavItem, false);
+        updateContentDisplay(defaultNavItem.textContent.trim());
+        
+        // Fade in active background
         setTimeout(() => {
             activeBg.style.opacity = "1";
-        }, 300); // Delay agar efek lebih natural
-    });
+        }, 50);
+    }
 
-    // Menyesuaikan kembali saat jendela di-resize tanpa animasi
-    window.addEventListener("resize", function () {
+    // Handle window resize
+    window.addEventListener("resize", function() {
         moveActiveBg(document.querySelector("nav ul li.active"), false);
     });
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 setTimeout(() => {
                     moveActiveControl(this);
-                }, 300); // Tunggu animasi fade-down sebelum pindah
+                }, 100); // Tunggu animasi fade-down sebelum pindah
             } else {
                 moveActiveControl(this);
             }
