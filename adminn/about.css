@@ -31,10 +31,75 @@
 
 
 
+
+
+/*====================================== Background rainbow ====================================*/
+@keyframes gradient-animation { 
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.About .rainbow {
+    position: relative;
+    width: 100%;
+    padding-top:150px ;
+    padding-bottom: 20px;
+    min-height: auto;
+    text-align: center;
+    background: linear-gradient(
+        135deg, 
+        var(--hijaumuda2) 0%, 
+        var(--Krem) 20%, 
+        var(--hijaumuda2) 40%, 
+        var(--Krem) 60%, 
+        var(--hijaumuda2) 80%, 
+        var(--Krem) 100%
+    );
+    background-size: 1000% 1000%;
+    animation: gradient-animation 10s infinite ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+/* Pseudo-element untuk menjaga jarak bawah */
+.About .rainbow::after {
+    content: '';
+    position: relative;
+    display: block;
+    width: 100%;
+    top: 20px;
+    min-height: 15vh; /* Jaga jarak bawah tetap */
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0)  , var(--Krem)); 
+    pointer-events: none; /* Agar tidak mengganggu interaksi */
+}
+
+
+.About .rainbow h1 {
+    position: relative;
+    font-size: clamp(40px, 6vw, 80px);
+    font-family: "acorn", sans-serif;
+    font-weight: bold;
+    color: var(--hijauTua);
+    line-height: 1.2;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    
+    /* Animasi */
+    opacity: 0;
+    transform: translateY(-20px); /* Mulai dari atas */
+    animation: fadeDown 0.4s ease-out forwards;
+}
+
+
+
+
 /*====================================== judul ====================================*/
 .container-judul-About {
     position: relative;
-    margin-top: 150px;
+    margin-top: -10px;
     margin-bottom: 20px;
     text-align: center;
     height: auto;
@@ -86,32 +151,39 @@
 /*====================================== Konten judul ====================================*/
 .content-wrapper {
     display: flex;
-    width: 100%;
+    background-color: #026d5f00;
+    width: 95%;
     margin-top: 30px;
-    max-width: 900px; /* Sesuaikan dengan kebutuhan */
+    max-width: 1050px; /* Sesuaikan dengan kebutuhan */
     justify-content: space-between;
     align-items: center;
 }
 
 .fotosaya {
-    width: 50%;
+    width: 100%; /* Perbesar lebar */
     text-align: center;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     box-sizing: border-box;
+    transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
 
+    opacity: 0;
+    transform: translateY(-20px); /* Mulai dari atas */
+    animation: fadeDown 0.4s ease-out forwards;
 }
-
 
 .fotosaya img {
     width: 100%;
-    height: 60%;
-    border-top-left-radius: 30%; /* Lengkungan di kiri atas */
-    border-top-right-radius: 30%; /* Lengkungan di kanan atas */
+    height: auto; /* Jaga proporsi gambar */
+    min-height: 300px; /* Tambah tinggi minimum */
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+    transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
 }
 
 
+
 .content-Deskripsi {
-    width: 80%;
+    width: 100%;
     text-align: center;
     text-align: left;
     padding: 20px;
@@ -124,13 +196,13 @@
 
 .content-wrapper .content-Deskripsi h1 {
     position: relative;
-    font-size: 40px ;
+    font-size: clamp(25px, 5vw, 40px) ;
     font-family: "acorn", sans-serif;
     font-weight: bold;
     color: var(--hijauTua);
     line-height: 1.2;
     text-rendering: optimizeLegibility;
-    margin: 0;
+    margin-left:20px;
     
     /* Animasi */
     opacity: 0;
@@ -141,10 +213,12 @@
 
 .content-wrapper .content-Deskripsi p {
     position: relative;
-    font-size: 20px;
+    margin-left: 20px;
+    font-size: clamp(14px, 2vw, 20px);
     font-family: "poppins", sans-serif;
     font-weight: 600;
     color: var(--Hijaumuda);
+    text-align: justify;
     
 
     /* Animasi */
@@ -153,6 +227,294 @@
     animation: fadeDown 0.4s ease-out forwards;
     animation-delay: 0.3s; /* P muncul setelah h1 */
 }
+
+
+
+
+/*====================================== judul pendidikan ====================================*/
+.container-judul-About2 {
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    padding-left: 100px;
+    text-align: left;
+    height: auto;
+    background-color: rgba(255, 0, 0, 0); 
+}
+
+
+
+.container-judul-About2 h1{
+    position: relative;
+    font-size: clamp(40px, 6vw, 80px);
+    font-family: "acorn", sans-serif;
+    font-weight: bold;
+    color: var(--hijauTua);
+    line-height: 1;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+}
+
+
+
+/*====================================== Konten pendidikan ====================================*/
+.container-pendidikan {
+    position: relative;
+    background-color: rgba(255, 0, 0, 0);
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
+    overflow: hidden;
+    padding: 20px; /* Memberi jarak dari tepi */
+    box-sizing: border-box; /* Pastikan padding tidak mempengaruhi width/height */
+    z-index: 3;
+}
+
+.container-border {
+    position: relative;
+    background-color: rgba(55, 255, 0, 0);
+    width: 95%;
+    height: auto; 
+    justify-content: left;
+    align-items: center;
+
+    padding: 0px; /* Tambahkan padding agar konten tidak terlalu mepet */
+}
+
+/* Garis vertikal di kiri */
+.line-vertikal {
+    position: absolute;
+    left: 0; /* Tempatkan di sisi kiri */
+    top: 0;
+    width: 3px; /* Lebar garis */
+    height: 100%; /* Sesuaikan tinggi dengan parent */
+    margin-left: 26px;
+    background-color: #bddff9; /* Warna hitam */
+}
+
+
+
+
+
+
+.Timline1 {
+    background-color: rgba(0, 0, 255, 0); 
+    width: 97%; 
+    padding: 15px; 
+    text-align: left; 
+    border-radius: 5px; 
+    position: relative;
+    left: 0;
+    margin: 0px 0; 
+    align-items: center; /* Pusatkan secara vertikal */
+    gap: 0px; /* Jarak antar elemen */
+    z-index: 3;
+    margin-bottom: 20px;
+}
+
+
+.Top-wrapper{
+    display: flex;           
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Circle */
+.circle1 {
+    border-radius: 50%;
+    margin-top: 25px;
+    margin-left: -2px;
+    width: 30px; /* Atur sesuai kebutuhan */
+    height: 30px; /* Nilai harus sama dengan width */
+    
+    background-color: var(--hijauTua);
+    display: inline-block;
+  }
+
+/* Judul */
+.timeline-header1,
+.timeline-header2 {
+    position: relative;
+    width: 95%;
+    margin-left: 10px;
+    align-items: flex-start;
+    background-color:#bddff9;
+    border-radius: 20px;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 10;
+    
+}
+
+.main-wrapper{
+    display: flex;           
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.main-title {
+    font-size: clamp(10px, 5vw, 30px) ;
+    color: var(--Abu);
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-family: "acorn", sans-serif;;
+}
+
+
+
+
+
+.time-range {
+    margin-top: 5px;
+    color: #01594d;
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-family: "acorn", sans-serif;
+    font-size: clamp(12px, 2vw, 20px);
+}
+
+
+
+.sub-title {
+    font-family: "proppins", sans-serif;
+    font-weight: 600;
+    font-size: clamp(12px, 2vw, 20px);
+    color: #01594d;
+}
+
+
+
+
+
+
+
+@keyframes slideDown {
+    0% { 
+        transform: scaleY(0); 
+        opacity: 0; 
+        max-height: 0;
+    }
+    100% { 
+        transform: scaleY(1); 
+        opacity: 1; 
+        max-height: 10000px; /* Nilai cukup besar untuk menampung konten */
+    }
+}
+
+@keyframes slideUp {
+    0% { 
+        transform: scaleY(1); 
+        opacity: 1; 
+        max-height: 10000px;
+    }
+    100% { 
+        transform: scaleY(0); 
+        opacity: 0; 
+        max-height: 0;
+    }
+}
+
+.kontenTimeline1,
+.kontenTimeline2 {
+    position: relative;
+    height: auto;
+    margin-top: -30px;
+    margin-left: 38px;
+    margin-right: 0px;
+    border-radius: 20px;
+    display: none;
+    padding: 30px 20px 20px 20px;
+    background-color: var(--activebg);
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 5px solid #bddff9;
+    overflow: hidden;
+    transform-origin: top;
+    animation-fill-mode: forwards;
+    animation: slideDown 0.5s ease forwards;
+}
+
+.kontenTimeline1 p,
+.kontenTimeline2 p {
+    color: var(--Hijaumuda);
+    font-size: clamp(14px, 2vw, 18px);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    padding: 0;
+    line-height: 1.6;
+    text-indent: -1.5em; /* Negative indent for first line */
+    padding-left: 1.5em; /* Positive padding to offset */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.kontenTimeline1 p.sub-khusus,
+.kontenTimeline2 p.sub-khusus {
+    background-color: #bddff9; /* Soft blue highlight */
+    color: var(--Abu); /* Gray text color */
+    padding: 5px 8px;
+    border-radius: 6px;
+    margin: 20px 0 15px 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    border-left: 4px solid #f5f256; /* Accent blue border */
+}
+
+.kontenTimeline1 p ion-icon,
+.kontenTimeline2 p ion-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Special styling for the heading line */
+.kontenTimeline1 p:has(> ion-icon),
+.kontenTimeline2 p:has(> ion-icon) {
+    text-indent: -2em;
+    padding-left: 2em;
+}
+
+.kontenTimeline1 p:not(:has(> ion-icon)),
+.kontenTimeline2 p:not(:has(> ion-icon)) {
+    text-indent: 0;
+    padding-left: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.kontenTimeline1.hidden,
+.kontenTimeline2.hidden {
+    animation: slideUp 0.5s ease forwards; /* Animasi menghilang */
+}
+
+.kontenTimeline1:hover,
+.kontenTimeline2:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.kontenTimeline1 p,
+.kontenTimeline2 p {
+    color: var(--Hijaumuda);
+    font-size: clamp(14px, 2vw, 18px);
+    padding-top: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin-left: 0px;
+    line-height: 1.6;
+}
+
+
+
+
+
+
 
 
 
@@ -168,10 +530,27 @@
 
 @media (max-width: 767px) {
 
+
+    .About .rainbow {
+        position: relative;
+        width: 100%;
+        padding-top:150px ;
+        padding-bottom: 0px;
+    }
+
+    .About .rainbow::after {
+        content: '';
+        position: relative;
+        display: block;
+        width: 100%;
+        top: 0px;
+    }
+    
+
     .container-judul-About {
         position: relative;
-        margin-top: 150px;
-        margin-bottom: -70px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         text-align: center;
         height: auto;
         display: flex;
@@ -183,17 +562,160 @@
     
 
 
-    .container-judul-About h1 {
+    .content-wrapper .content-Deskripsi h1{
+        margin-left: 0px;
+    }
+
+    .content-wrapper .content-Deskripsi p {
         position: relative;
-        font-size: clamp(35px, 5vw, 60px); /* Ukuran minimal 32px, maksimal 64px */
-        font-family: "acorn", sans-serif;
-        font-weight: bold;
-        line-height: 1.2;
-        text-rendering: optimizeLegibility;
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: 0px;
+    }
+    .content-wrapper {
+        background-color: rgba(102, 51, 153, 0);
+        flex-direction: column; /* Mengubah dari horizontal ke vertikal */
+        align-items: center; /* Agar konten tetap rapi di tengah */
+        text-align: center; /* Jika ingin teksnya rata tengah */
+    }
+
+
+    .fotosaya {
+        width: 95%; /* Perbesar lebar */
+        text-align: center;
+        padding: 0 20px 20px 20px;
+        box-sizing: border-box;
+        transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
+    
+        opacity: 0;
+        transform: translateY(-20px); /* Mulai dari atas */
+        animation: fadeDown 0.4s ease-out forwards;
     }
     
+    .fotosaya img {
+        width: 100%;
+        height: auto; /* Jaga proporsi gambar */
+        min-height: 300px; /* Tambah tinggi minimum */
+        border-top-left-radius: 30%;
+        border-top-right-radius: 30%;
+        transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
+    }
+    
+    
+    
+    .content-Deskripsi {
+        width: 90%;
+        text-align: center;
+        text-align: left;
+        padding: 0px;
+        box-sizing: border-box;
+    
+    }
 
+
+
+
+    .container-judul-About2 {
+        position: relative;
+        margin-top: 100px;
+        margin-bottom: 10px;
+        padding-left: 40px;
+        text-align: left;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    .container-pendidikan {
+        position: relative;
+        background-color: rgba(255, 0, 0, 0);
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 150px;
+        overflow: hidden;
+        padding: 0 30px 0 0px; /* Memberi jarak dari tepi */
+        box-sizing: border-box; /* Pastikan padding tidak mempengaruhi width/height */
+    }
+
+
+
+    .line-vertikal {
+        position: absolute;
+        left: 0; /* Tempatkan di sisi kiri */
+        top: 0;
+        width: 2px; /* Lebar garis */
+        height: 100%; /* Sesuaikan tinggi dengan parent */
+        margin-left: 13px;
+    }
+
+
+
+    .circle1 {
+        border-radius: 50%;
+        margin-top: 25px;
+        margin-left: -10px;
+        width: 20px; /* Atur sesuai kebutuhan */
+        height: 20px; /* Nilai harus sama dengan width */
+        
+        background-color: var(--hijauTua);
+        display: inline-block;
+      }
+
+      .Timline1 {
+        background-color: rgba(0, 0, 255, 0); 
+      }
+
+
+
+    .container-border {
+        position: relative;
+        background-color: rgba(55, 255, 0, 0);
+        width: 100%;
+    }
+
+
+    .timeline-header {
+        position: relative;
+        width: 90%;
+        margin-left: 10px;
+    }
+
+    .kontenTimeline1,
+    .kontenTimeline2 {
+        position: relative;
+        margin-top: -30px;
+        margin-left: 21px;
+    }
+
+
+    .main-title {
+        font-size: clamp(11px, 4vw, 30px) ;
+        letter-spacing: 1px;
+    }
+
+
+    .time-range {
+        margin-bottom: 4px;
+        font-size: clamp(10px, 2vw, 20px);
+    }
+
+
+    .kontenTimeline1 p,
+    .kontenTimeline2 p {
+        font-size: clamp(12px, 2vw, 18px);
+        padding-top: 15px;
+        font-family: "Poppins", sans-serif;
+        text-align: left;
+    }
+
+    
 
 }
