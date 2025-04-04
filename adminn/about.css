@@ -14,10 +14,13 @@
     --BlurNavbar: rgba(255, 255, 255, 0.44);
     --activebg: rgba(255, 255, 255, 0.679);
     --hijaumuda2:#ccdfb9;
+    --kontentimline:#ffffff57;
 
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+
+ 
 
   .night-mode {
     --BlurNavbar: #243931c6;
@@ -27,6 +30,7 @@
     --hijaumuda2:#026d5f;
     --Krem: #233831;
     --iconnightmode:#233831;
+    --kontentimline:#2b4b3ec5;
 }
 
 
@@ -137,6 +141,7 @@
     opacity: 0;
     transform: translateY(-20px); /* Mulai dari atas */
     animation: fadeDown 0.4s ease-out forwards;
+    animation-delay: 0.3s; /* P muncul setelah h1 */
 }
 
 
@@ -165,10 +170,7 @@
     padding: 0 20px 20px 20px;
     box-sizing: border-box;
     transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
-
-    opacity: 0;
-    transform: translateY(-20px); /* Mulai dari atas */
-    animation: fadeDown 0.4s ease-out forwards;
+    
 }
 
 .fotosaya img {
@@ -177,7 +179,11 @@
     min-height: 300px; /* Tambah tinggi minimum */
     border-top-left-radius: 30%;
     border-top-right-radius: 30%;
-    transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
+
+    opacity: 0;
+    transform: translateY(-20px); /* Mulai dari atas */
+    animation: fadeDown 0.4s ease-out forwards;
+    animation-delay: 0.3s; /* P muncul setelah h1 */
 }
 
 
@@ -208,6 +214,7 @@
     opacity: 0;
     transform: translateY(-20px); /* Mulai dari atas */
     animation: fadeDown 0.4s ease-out forwards;
+    animation-delay: 0.5s; /* P muncul setelah h1 */
 }
 
 
@@ -225,7 +232,7 @@
     opacity: 0;
     transform: translateY(-20px); /* Mulai dari atas */
     animation: fadeDown 0.4s ease-out forwards;
-    animation-delay: 0.3s; /* P muncul setelah h1 */
+    animation-delay: 0.6s; /* P muncul setelah h1 */
 }
 
 
@@ -236,7 +243,8 @@
     position: relative;
     margin-top: 100px;
     margin-bottom: 10px;
-    padding-left: 100px;
+    padding-left: 110px;
+    padding-right: 30px;
     text-align: left;
     height: auto;
     background-color: rgba(255, 0, 0, 0); 
@@ -252,7 +260,18 @@
     color: var(--hijauTua);
     line-height: 1;
     text-rendering: optimizeLegibility;
+    margin-bottom: 10px;
+}
+
+.container-judul-About2 p{
+    position: relative;
+    font-size: clamp(14px, 2vw, 20px);
+    font-family: "poppins", sans-serif;
+    font-weight: 600;
+    color: var(--Hijaumuda);
+    text-rendering: optimizeLegibility;
     margin: 0;
+    text-align: justify;
 }
 
 
@@ -336,7 +355,10 @@
 
 /* Judul */
 .timeline-header1,
-.timeline-header2 {
+.timeline-header2,
+.timeline-header3,
+.timeline-header4,
+.timeline-header5 {
     position: relative;
     width: 95%;
     margin-left: 10px;
@@ -418,7 +440,10 @@
 }
 
 .kontenTimeline1,
-.kontenTimeline2 {
+.kontenTimeline2,
+.kontenTimeline3,
+.kontenTimeline4,
+.kontenTimeline5 {
     position: relative;
     height: auto;
     margin-top: -30px;
@@ -427,9 +452,9 @@
     border-radius: 20px;
     display: none;
     padding: 30px 20px 20px 20px;
-    background-color: var(--activebg);
+    background-color: var(--kontentimline);
     z-index: 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border-left: 5px solid #bddff9;
     overflow: hidden;
@@ -439,7 +464,10 @@
 }
 
 .kontenTimeline1 p,
-.kontenTimeline2 p {
+.kontenTimeline2 p,
+.kontenTimeline3 p,
+.kontenTimeline4 p,
+.kontenTimeline5 p {
     color: var(--Hijaumuda);
     font-size: clamp(14px, 2vw, 18px);
     font-family: "Poppins", sans-serif;
@@ -454,7 +482,10 @@
 }
 
 .kontenTimeline1 p.sub-khusus,
-.kontenTimeline2 p.sub-khusus {
+.kontenTimeline2 p.sub-khusus,
+.kontenTimeline3 p.sub-khusus,
+.kontenTimeline4 p.sub-khusus,
+.kontenTimeline5 p.sub-khusus {
     background-color: #bddff9; /* Soft blue highlight */
     color: var(--Abu); /* Gray text color */
     padding: 5px 8px;
@@ -467,20 +498,29 @@
 }
 
 .kontenTimeline1 p ion-icon,
-.kontenTimeline2 p ion-icon {
+.kontenTimeline2 p ion-icon,
+.kontenTimeline3 p ion-icon,
+.kontenTimeline4 p ion-icon,
+.kontenTimeline5 p ion-icon {
     margin-right: 8px;
     vertical-align: middle;
 }
 
 /* Special styling for the heading line */
 .kontenTimeline1 p:has(> ion-icon),
-.kontenTimeline2 p:has(> ion-icon) {
+.kontenTimeline2 p:has(> ion-icon),
+.kontenTimeline3 p:has(> ion-icon),
+.kontenTimeline4 p:has(> ion-icon),
+.kontenTimeline5 p:has(> ion-icon) {
     text-indent: -2em;
     padding-left: 2em;
 }
 
 .kontenTimeline1 p:not(:has(> ion-icon)),
-.kontenTimeline2 p:not(:has(> ion-icon)) {
+.kontenTimeline2 p:not(:has(> ion-icon)),
+.kontenTimeline3 p:not(:has(> ion-icon)),
+.kontenTimeline4 p:not(:has(> ion-icon)),
+.kontenTimeline5 p:not(:has(> ion-icon)) {
     text-indent: 0;
     padding-left: 0;
     margin-top: 15px;
@@ -489,18 +529,27 @@
 
 
 .kontenTimeline1.hidden,
-.kontenTimeline2.hidden {
+.kontenTimeline2.hidden,
+.kontenTimeline3.hidden,
+.kontenTimeline4.hidden,
+.kontenTimeline5.hidden {
     animation: slideUp 0.5s ease forwards; /* Animasi menghilang */
 }
 
 .kontenTimeline1:hover,
-.kontenTimeline2:hover {
+.kontenTimeline2:hover,
+.kontenTimeline3:hover,
+.kontenTimeline4:hover,
+.kontenTimeline5:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
 }
 
 .kontenTimeline1 p,
-.kontenTimeline2 p {
+.kontenTimeline2 p,
+.kontenTimeline3 p,
+.kontenTimeline4 p,
+.kontenTimeline5 p {
     color: var(--Hijaumuda);
     font-size: clamp(14px, 2vw, 18px);
     padding-top: 15px;
@@ -617,7 +666,7 @@
         position: relative;
         margin-top: 100px;
         margin-bottom: 10px;
-        padding-left: 40px;
+        padding-left: 30px;
         text-align: left;
     }
 
@@ -689,7 +738,10 @@
     }
 
     .kontenTimeline1,
-    .kontenTimeline2 {
+    .kontenTimeline2,
+    .kontenTimeline3,
+    .kontenTimeline4,
+    .kontenTimeline5 {
         position: relative;
         margin-top: -30px;
         margin-left: 21px;
@@ -709,7 +761,10 @@
 
 
     .kontenTimeline1 p,
-    .kontenTimeline2 p {
+    .kontenTimeline2 p,
+    .kontenTimeline3 p,
+    .kontenTimeline4 p,
+    .kontenTimeline5 p {
         font-size: clamp(12px, 2vw, 18px);
         padding-top: 15px;
         font-family: "Poppins", sans-serif;
