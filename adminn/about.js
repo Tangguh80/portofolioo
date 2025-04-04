@@ -27,4 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup untuk kedua timeline
     setupTimeline('.timeline-header1', '.kontenTimeline1');
     setupTimeline('.timeline-header2', '.kontenTimeline2');
+    setupTimeline('.timeline-header3', '.kontenTimeline3');
+    setupTimeline('.timeline-header4', '.kontenTimeline4');
+    setupTimeline('.timeline-header5', '.kontenTimeline5');
 });
