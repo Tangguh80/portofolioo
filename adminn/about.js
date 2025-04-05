@@ -31,3 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
     setupTimeline('.timeline-header4', '.kontenTimeline4');
     setupTimeline('.timeline-header5', '.kontenTimeline5');
 });
+
+
+
+
+
+
+
+
+
+
+let currentSlide = 0;
+const slides = document.querySelector(".slides");
+const totalSlides = document.querySelectorAll(".slide").length;
+
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+}, 3000); // Ganti slide setiap 3 detik
