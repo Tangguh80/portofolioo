@@ -485,7 +485,7 @@
 .kontenTimeline3 p.sub-khusus,
 .kontenTimeline4 p.sub-khusus,
 .kontenTimeline5 p.sub-khusus {
-    background-color: #bddff9; /* Soft blue highlight */
+    background-color: rgb(196, 243, 40); /* Soft blue highlight */
     color: var(--Abu); /* Gray text color */
     padding: 5px 8px;
     border-radius: 6px;
@@ -493,7 +493,7 @@
     font-family: "Poppins", sans-serif;
     font-weight: bold;
     display: inline-block;
-    border-left: 4px solid #f5f256; /* Accent blue border */
+    border-left: 4px solid var(--Abu); /* Accent blue border */
 }
 
 .kontenTimeline1 p ion-icon,
