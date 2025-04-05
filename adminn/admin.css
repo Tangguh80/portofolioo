@@ -114,6 +114,7 @@ nav ul {
     padding: 0;
     margin: 0;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
 }
 
 nav ul li {
@@ -1079,7 +1080,9 @@ nav ul li a ion-icon {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
+
 
 .line-container {
     display: flex;
@@ -1099,6 +1102,7 @@ nav ul li a ion-icon {
     overflow: visible;
     flex-grow: 1;
     margin: 0 1px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .line-night::before {
@@ -1106,7 +1110,7 @@ nav ul li a ion-icon {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 3px;
+    width: 2px;
     height: 100%;
     background-color: var(--hijauTua);
     transition: height 0.3s ease, background-color 0.3s ease;
@@ -1593,7 +1597,7 @@ nav ul li a ion-icon {
 
         .container-Night {
             position: relative;
-            margin-top: 150px;
+            margin-top: 70px;
             margin-bottom: 50px;
             width: 90%;
             height: auto;
