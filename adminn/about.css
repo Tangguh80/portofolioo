@@ -311,7 +311,7 @@
     width: 3px; /* Lebar garis */
     height: 100%; /* Sesuaikan tinggi dengan parent */
     margin-left: 26px;
-    background-color: rgb(196, 243, 40); /* Warna hitam */
+    background-color:  #bddff9; /* Warna hitam */
 }
 
 
@@ -362,7 +362,7 @@
     width: 95%;
     margin-left: 10px;
     align-items: flex-start;
-    background-color:rgb(196, 243, 40);
+    background-color: #bddff9;
     border-radius: 20px;
     padding: 20px;
     cursor: pointer;
@@ -455,7 +455,7 @@
     z-index: 1;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    border-left: 5px solid rgb(196, 243, 40);
+    border-left: 5px solid  #bddff9;
     overflow: hidden;
     transform-origin: top;
     animation-fill-mode: forwards;
@@ -485,7 +485,7 @@
 .kontenTimeline3 p.sub-khusus,
 .kontenTimeline4 p.sub-khusus,
 .kontenTimeline5 p.sub-khusus {
-    background-color: rgb(196, 243, 40); /* Soft blue highlight */
+    background-color:  #bddff9; /* Soft blue highlight */
     color: var(--Abu); /* Gray text color */
     padding: 5px 8px;
     border-radius: 6px;
