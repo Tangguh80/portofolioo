@@ -47,5 +47,5 @@ const totalSlides = document.querySelectorAll(".slide").length;
 
 setInterval(() => {
   currentSlide = (currentSlide + 1) % totalSlides;
-  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+  slides.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`;
 }, 3000); // Ganti slide setiap 3 detik
