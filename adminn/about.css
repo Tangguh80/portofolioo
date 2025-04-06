@@ -584,8 +584,8 @@
   
   .slides {
     display: flex;
-    height: 100%;
-    transition: transform 1s ease-in-out;
+    height: 100%; /* Mengisi tinggi slider */
+    transition: transform 0.8s ease-in-out;
     will-change: transform;
   }
   
@@ -602,6 +602,7 @@
     object-fit: cover; /* Memastikan gambar menutupi area tanpa distorsi */
     object-position: center; /* Pusatkan gambar */
   }
+  
 
   .caption {
     position: absolute;
@@ -615,7 +616,9 @@
     font-weight: 600;
     font-size: clamp(11px, 2vw, 14px);
     letter-spacing: 0.5px;
-  }
+  }                                                                                                                                                                    
+
+  
 
 
 
