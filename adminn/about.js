@@ -61,7 +61,8 @@ const imageUrls = [
     "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto6.jpg?raw=true",
     "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto7.jpg?raw=true"
   ];
-
+  
+  // Fungsi preload menggunakan objek Image
   function preloadImages(urls) {
     const promises = urls.map(url => {
       return new Promise((resolve, reject) => {
@@ -73,25 +74,49 @@ const imageUrls = [
     });
     return Promise.all(promises);
   }
-
-  preloadImages(imageUrls).then(() => {
-    // Pasang src setelah preload
-    document.querySelectorAll('.slide').forEach((img, i) => {
-      img.src = imageUrls[i]; // atau: img.setAttribute('src', img.dataset.src);
+  
+  // Fungsi untuk menunggu semua elemen <img> benar-benar dirender di DOM
+  function waitUntilImagesRendered() {
+    const imgElements = document.querySelectorAll('.slide');
+    const promises = Array.from(imgElements).map(img => {
+      return new Promise((resolve, reject) => {
+        if (img.complete && img.naturalHeight !== 0) {
+          resolve(); // Sudah loaded
+        } else {
+          img.onload = resolve;
+          img.onerror = reject;
+        }
+      });
     });
-
-    // Tampilkan slider setelah gambar siap
-    document.querySelector('.slider').style.visibility = 'visible';
-
-    // Mulai slider otomatis
-    let currentSlide = 0;
-    const slides = document.querySelector(".slides");
-    const totalSlides = document.querySelectorAll(".slide").length;
-
-    setInterval(() => {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }, 3000);
-  }).catch(error => {
-    console.error("Gagal preload gambar:", error);
-  });
+    return Promise.all(promises);
+  }
+  
+  // Jalankan proses preload, render, dan slider
+  preloadImages(imageUrls)
+    .then(() => {
+      // Pasang src setelah preload selesai
+      document.querySelectorAll('.slide').forEach((img, i) => {
+        img.src = imageUrls[i];
+      });
+  
+      // Tunggu semua gambar di DOM benar-benar selesai dirender
+      return waitUntilImagesRendered();
+    })
+    .then(() => {
+      // Setelah semua gambar dirender, tampilkan slider
+      document.querySelector('.slider').style.visibility = 'visible';
+  
+      // Inisialisasi slider otomatis
+      let currentSlide = 0;
+      const slides = document.querySelector(".slides");
+      const totalSlides = document.querySelectorAll(".slide").length;
+  
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }, 3000); // Ganti slide tiap 3 detik
+    })
+    .catch(error => {
+      console.error("Terjadi kesalahan saat memuat gambar:", error);
+    });
+  
