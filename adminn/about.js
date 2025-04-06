@@ -52,73 +52,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// Daftar URL gambar untuk preload
+const imageUrls = [
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/%7B1E3F8480-0C89-4741-AEF4-1356B54F7D39%7D%20(1).png?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/%7B34898D06-AF6F-4AE7-91BF-202C380AC2A4%7D%20(1).png?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202023-11-08%20at%2013.32.00_8b0ec696%20(1).jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202023-11-24%20at%2016.01.30_e23aecd0.jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202024-01-16%20at%2020.43.57_44d2d3f7.jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202024-07-16%20at%2020.31.45_8e48189e.jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202024-07-24%20at%2009.16.08_a4a5f833.jpg?raw=true"
+  ];
 
-document.addEventListener("DOMContentLoaded", () => {
-    const slidesContainer = document.querySelector(".slides");
-    const slideImages = document.querySelectorAll(".slide");
-    const totalSlides = slideImages.length;
-    let currentSlide = 0;
-    let slideshowInterval = null;
-  
-    // Fungsi untuk memeriksa apakah gambar sudah sepenuhnya dirender
-    function checkImageComplete(img) {
-      return img.complete && img.naturalHeight !== 0;
-    }
-  
-    // Fungsi tunggu semua gambar dimuat dan dirender
-    function preloadImages(images, callback) {
-      let loadedCount = 0;
-      let allImagesLoaded = false;
-  
-      function imageLoaded() {
-        if (allImagesLoaded) return;
-        
-        loadedCount++;
-        if (loadedCount === images.length) {
-          allImagesLoaded = true;
-          callback();
-        }
-      }
-  
-      images.forEach((img) => {
-        // Jika gambar sudah dimuat
-        if (checkImageComplete(img)) {
-          loadedCount++;
-          if (loadedCount === images.length) {
-            allImagesLoaded = true;
-            callback();
-          }
-          return;
-        }
-  
-        // Tambahkan event listener untuk gambar yang belum dimuat
-        img.addEventListener('load', imageLoaded);
-        img.addEventListener('error', imageLoaded); // Tangani error juga
+  // Fungsi untuk preload gambar
+  function preloadImages(urls) {
+    const promises = urls.map(url => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;
+        img.onerror = reject;
       });
-  
-      // Periksa lagi jika semua gambar sudah dimuat sebelum event listener terpasang
-      if (Array.from(images).every(checkImageComplete)) {
-        allImagesLoaded = true;
-        callback();
-      }
-    }
-  
-    // Fungsi untuk memulai slideshow
-    function startSlideshow() {
-      console.log("Semua gambar telah siap, mulai slider...");
-      slideshowInterval = setInterval(() => {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        slidesContainer.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`;
-      }, 3000);
-    }
-  
-    // Panggil preload, lalu jalankan slider
-    preloadImages(slideImages, startSlideshow);
-  
-    // Bersihkan interval saat halaman ditutup/unload
-    window.addEventListener('beforeunload', () => {
-      if (slideshowInterval) {
-        clearInterval(slideshowInterval);
-      }
     });
+    return Promise.all(promises);
+  }
+
+  // Inisialisasi slider
+  let currentSlide = 0;
+  const slides = document.querySelector(".slides");
+  const totalSlides = document.querySelectorAll(".slide").length;
+
+  // Mulai animasi setelah semua gambar dimuat
+  preloadImages(imageUrls).then(() => {
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      slides.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`;
+    }, 3000); // Ganti slide setiap 3 detik
+  }).catch(error => {
+    console.error("Gagal memuat gambar:", error);
   });
