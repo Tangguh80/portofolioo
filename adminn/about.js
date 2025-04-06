@@ -54,13 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Daftar URL gambar untuk preload
 const imageUrls = [
-    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/%7B1E3F8480-0C89-4741-AEF4-1356B54F7D39%7D%20(1).png?raw=true",
-    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/%7B34898D06-AF6F-4AE7-91BF-202C380AC2A4%7D%20(1).png?raw=true",
-    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202023-11-08%20at%2013.32.00_8b0ec696%20(1).jpg?raw=true",
-    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202023-11-24%20at%2016.01.30_e23aecd0.jpg?raw=true",
-    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202024-01-16%20at%2020.43.57_44d2d3f7.jpg?raw=true",
-    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202024-07-16%20at%2020.31.45_8e48189e.jpg?raw=true",
-    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/WhatsApp%20Image%202024-07-24%20at%2009.16.08_a4a5f833.jpg?raw=true"
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto1.png?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto2.png?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto3.jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto4.jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto5.jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto6.jpg?raw=true",
+    "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto7.jpg?raw=true"
   ];
 
   // Fungsi untuk preload gambar
