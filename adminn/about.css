@@ -584,14 +584,16 @@
   
   .slides {
     display: flex;
-    height: 100%; /* Mengisi tinggi slider */
-    transition: transform 1s ease-in-out;
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+    will-change: transform;
   }
   
   .slide-container {
     position: relative;
     min-width: 100%;
     height: 100%; /* Mengisi tinggi slides */
+    overflow: hidden;
   }
   
   .slide {
