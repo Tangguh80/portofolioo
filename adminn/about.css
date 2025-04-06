@@ -585,7 +585,7 @@
   .slides {
     display: flex;
     height: 100%; /* Mengisi tinggi slider */
-    transition: transform 0.8s ease-in-out;
+    transition: transform 2s ease-in-out;
     will-change: transform;
   }
   
