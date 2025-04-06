@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Daftar URL gambar untuk preload
 const imageUrls = [
     "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto1.png?raw=true",
     "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto2.png?raw=true",
@@ -63,7 +62,6 @@ const imageUrls = [
     "https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto7.jpg?raw=true"
   ];
 
-  // Fungsi untuk preload gambar
   function preloadImages(urls) {
     const promises = urls.map(url => {
       return new Promise((resolve, reject) => {
@@ -76,17 +74,24 @@ const imageUrls = [
     return Promise.all(promises);
   }
 
-  // Inisialisasi slider
-  let currentSlide = 0;
-  const slides = document.querySelector(".slides");
-  const totalSlides = document.querySelectorAll(".slide").length;
-
-  // Mulai animasi setelah semua gambar dimuat
   preloadImages(imageUrls).then(() => {
+    // Pasang src setelah preload
+    document.querySelectorAll('.slide').forEach((img, i) => {
+      img.src = imageUrls[i]; // atau: img.setAttribute('src', img.dataset.src);
+    });
+
+    // Tampilkan slider setelah gambar siap
+    document.querySelector('.slider').style.visibility = 'visible';
+
+    // Mulai slider otomatis
+    let currentSlide = 0;
+    const slides = document.querySelector(".slides");
+    const totalSlides = document.querySelectorAll(".slide").length;
+
     setInterval(() => {
       currentSlide = (currentSlide + 1) % totalSlides;
-      slides.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`;
-    }, 3000); // Ganti slide setiap 3 detik
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }, 3000);
   }).catch(error => {
-    console.error("Gagal memuat gambar:", error);
+    console.error("Gagal preload gambar:", error);
   });
