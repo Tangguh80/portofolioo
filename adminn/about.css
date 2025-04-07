@@ -321,7 +321,7 @@
     width: 3px; /* Lebar garis */
     height: 100%; /* Sesuaikan tinggi dengan parent */
     margin-left: 26px;
-    background-color:  #bddff9; /* Warna hitam */
+    background-color:  #FFC94A; /* Warna hitam */
 }
 
 
@@ -372,13 +372,35 @@
     width: 95%;
     margin-left: 10px;
     align-items: flex-start;
-    background-color: #bddff9;
+    background-color: #FFC94A;
     border-radius: 20px;
     padding: 20px;
     cursor: pointer;
     z-index: 10;
+    -webkit-tap-highlight-color: transparent;
     
 }
+
+
+.timeline-header1,
+.timeline-header2,
+.timeline-header3,
+.timeline-header4,
+.timeline-header5 {
+    transition: all 0.3s ease;
+}
+
+.timeline-header1:hover,
+.timeline-header2:hover,
+.timeline-header3:hover,
+.timeline-header4:hover,
+.timeline-header5:hover {
+    transform: translateY(-5px);
+    border: 1px solid var(--hijauTua);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 
 .main-wrapper{
     display: flex;           
@@ -465,7 +487,7 @@
     z-index: 1;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    border-left: 5px solid  #bddff9;
+    border-left: 5px solid  #FFC94A;
     overflow: hidden;
     transform-origin: top;
     animation-fill-mode: forwards;
@@ -495,7 +517,7 @@
 .kontenTimeline3 p.sub-khusus,
 .kontenTimeline4 p.sub-khusus,
 .kontenTimeline5 p.sub-khusus {
-    background-color:  #bddff9; /* Soft blue highlight */
+    background-color:  #FFC94A; /* Soft blue highlight */
     color: var(--Abu); /* Gray text color */
     padding: 5px 8px;
     border-radius: 6px;
