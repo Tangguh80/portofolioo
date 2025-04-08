@@ -16,6 +16,7 @@
     --hijaumuda2:#ccdfb9;
     --kontentimline:#ffffff57;
 
+
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -105,6 +106,7 @@
     position: relative;
     margin-top: -10px;
     margin-bottom: 20px;
+    padding: 0px 60px;
     text-align: center;
     height: auto;
     display: flex;
@@ -156,18 +158,18 @@
 /*====================================== Konten judul ====================================*/
 .content-wrapper {
     display: flex;
-    background-color: #026d5f00;
-    width: 95%;
+    background-color: #ff00d000;
+    width: 100%;
     margin-top: -50px;
-    max-width: 1050px; /* Sesuaikan dengan kebutuhan */
     justify-content: space-between;
     align-items: center;
 }
 
 .fotosaya {
     width: 100%; /* Perbesar lebar */
+    background-color: rgba(0, 255, 13, 0);
     text-align: center;
-    padding: 0 20px 20px 20px;
+    padding: 0 50px 0px 50px;
     box-sizing: border-box;
     transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
     
@@ -189,10 +191,13 @@
 
 
 .content-Deskripsi {
+    position: relative;
     width: 100%;
     text-align: center;
     text-align: left;
-    padding: 20px;
+    margin-left: 0px;
+    padding: 20px 0px;
+    background-color: #d0e9e000;
     box-sizing: border-box;
 
 }
@@ -220,12 +225,15 @@
 
 .content-wrapper .content-Deskripsi p {
     position: relative;
-    margin-left: 20px;
+    padding: 20px;
+    margin-left: 0px;
     font-size: clamp(14px, 2vw, 20px);
     font-family: "poppins", sans-serif;
     font-weight: 600;
     color: var(--Hijaumuda);
-    text-align: justify;
+    text-align: left;
+    background-color: var(--kontentimline);
+    border-radius: 20px;
     
 
     /* Animasi */
@@ -699,19 +707,19 @@
         position: relative;
         margin-top: 0px;
         margin-bottom: 0px;
+        padding: 0px 10px;
         text-align: center;
         height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgba(255, 0, 0, 0); 
     }
     
 
 
     .content-wrapper .content-Deskripsi h1{
-        margin-left: 0px;
+        margin-left: 20px;
     }
 
     .content-wrapper .content-Deskripsi p {
@@ -740,17 +748,17 @@
     
     .fotosaya img {
         width: 100%;
-        height: auto; /* Jaga proporsi gambar */
-        min-height: 300px; /* Tambah tinggi minimum */
-        border-top-left-radius: 30%;
-        border-top-right-radius: 30%;
-        transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
+        height: auto;
+        border-top-left-radius: 10%;
+        border-top-right-radius: 10%;
+        transition: all 0.3s ease;
     }
     
     
     
+    
     .content-Deskripsi {
-        width: 90%;
+        width: 95%;
         text-align: center;
         text-align: left;
         padding: 0px;
