@@ -612,6 +612,12 @@ nav ul li a ion-icon {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 0, 0, 0); 
+
+    /* Animasi */
+    opacity: 0;
+    transform: translateY(-20px); 
+    animation: fadeDown 0.4s ease-out forwards;
+    animation-delay: 0.3s; 
 }
 
 
