@@ -225,6 +225,7 @@
     gap: 0px; /* opsional, untuk jarak antar elemen */
     border-radius: 10px;
     transition: background-color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
   }
 
 
@@ -240,6 +241,7 @@
     text-align: left;
     width: 80%;
     background-color: #ffffff00; /* biar kelihatan beda */
+    user-select: none;
 }
 
 
@@ -253,6 +255,7 @@
     color: var(--hijauTua);
     text-rendering: optimizeLegibility;
     letter-spacing: 1px;
+    user-select: none;
 }
 
 
@@ -265,6 +268,7 @@
     color: var(--Hijaumuda);
     text-rendering: optimizeLegibility;
     margin: 0px 30px 45px 38px;
+    user-select: none;
 }
 
 
