@@ -1332,7 +1332,7 @@ nav ul li a ion-icon {
             position: relative;
             font-size: clamp(14px, 2vw, 20px); /* Ukuran minimal 14px, maksimal 18px */
             font-family: 'Poppins', sans-serif;
-            margin-top: 50px;
+            margin-top: 30px;
             max-width: 600px;
             margin-left: 30px;
             margin-right: 30px;
@@ -1345,7 +1345,7 @@ nav ul li a ion-icon {
             top: 2%; 
             margin-right: 10%;
             right: 0;
-            width: clamp(25px, 5vw, 50px); /* Minimal 30px, Maksimal 80px */
+            width: clamp(30px, 5vw, 50px); /* Minimal 30px, Maksimal 80px */
             height: auto;
         }
         
@@ -1354,7 +1354,7 @@ nav ul li a ion-icon {
             bottom: 45%;
             left: 0;
             margin-left: 4%;
-            width: clamp(25px, 5vw, 50px); 
+            width: clamp(30px, 5vw, 50px); 
             height: auto;
         }
 
