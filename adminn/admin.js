@@ -1,5 +1,8 @@
 /*====================================== Navigasi Navbar utama ====================================*/
 document.addEventListener("DOMContentLoaded", function() {
+    // Daftar section yang valid
+    const validSections = ['work', 'about', 'skill', 'contact'];
+    
     // Get all elements
     const navLinks = document.querySelectorAll("nav ul li");
     const activeBg = document.querySelector(".active-bg");
@@ -9,6 +12,64 @@ document.addEventListener("DOMContentLoaded", function() {
         skill: document.querySelector(".Skiil"),
         contact: document.querySelector(".contact")
     };
+
+    // Fungsi untuk scroll langsung ke atas tanpa animasi
+    function scrollToTopInstant() {
+        window.scrollTo(0, 0);
+    }
+
+    // Fungsi untuk mengupdate URL dan title
+    function updateUrlAndTitle(section) {
+        // Update title
+        const baseTitle = "Tangguh Sarwono • ";
+        let newTitle = baseTitle;
+        
+        switch(section.toLowerCase()) {
+            case 'work':
+                newTitle += "Engineer";
+                break;
+            case 'about':
+                newTitle += "About";
+                break;
+            case 'skill':
+                newTitle += "Skill";
+                break;
+            case 'contact':
+                newTitle += "Contact";
+                break;
+            default:
+                newTitle += "Engineer";
+        }
+        
+        document.title = newTitle;
+        
+        // Update URL tanpa reload halaman
+        const newUrl = section.toLowerCase() === 'work' 
+            ? window.location.pathname 
+            : `${window.location.pathname}?section=${section}`;
+        
+        history.pushState({ section }, '', newUrl);
+    }
+
+    // Fungsi untuk memvalidasi dan membersihkan section dari URL
+    function getValidSectionFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        let section = params.get('section');
+        
+        if (!section) return 'work';
+        
+        // Bersihkan section dan cocokkan dengan yang valid
+        section = section.toLowerCase().trim();
+        
+        // Cari section yang valid yang cocok dengan awal string
+        for (const validSection of validSections) {
+            if (section.startsWith(validSection)) {
+                return validSection;
+            }
+        }
+        
+        return 'work'; // Default jika tidak ada yang cocok
+    }
 
     // Hide all containers immediately (except Work)
     Object.keys(contentContainers).forEach(key => {
@@ -28,10 +89,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         
         // Then show only the active one
-        const activeContainer = contentContainers[activeClass.toLowerCase()];
+        const activeKey = activeClass.toLowerCase();
+        const activeContainer = contentContainers[activeKey];
+        
         if (activeContainer) {
             activeContainer.style.display = 'block';
+            // Scroll langsung ke atas tanpa animasi
+            scrollToTopInstant();
         }
+        
+        // Update URL and title
+        updateUrlAndTitle(activeClass);
     }
 
     // Function to move active background
@@ -74,27 +142,47 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Initialize with Work as default
-    const defaultNavItem = document.querySelector("nav ul li.active") || document.querySelector("nav ul li:first-child");
-    if (defaultNavItem) {
-        if (!defaultNavItem.classList.contains('active')) {
-            defaultNavItem.classList.add('active');
+    // Initialize based on URL or default to Work
+    function initializeNavigation() {
+        const currentSection = getValidSectionFromUrl();
+        let activeNavItem;
+        
+        // Find the corresponding nav item
+        navLinks.forEach(li => {
+            const linkText = li.textContent.trim().toLowerCase();
+            if (linkText === currentSection) {
+                activeNavItem = li;
+            }
+        });
+        
+        // If no matching section found, default to Work
+        if (!activeNavItem) {
+            activeNavItem = document.querySelector("nav ul li:first-child");
         }
         
-        moveActiveBg(defaultNavItem, false);
-        updateContentDisplay(defaultNavItem.textContent.trim());
+        // Set active class
+        navLinks.forEach(item => item.classList.remove("active"));
+        activeNavItem.classList.add("active");
+        
+        // Update UI
+        moveActiveBg(activeNavItem, false);
+        updateContentDisplay(activeNavItem.textContent.trim());
         
         // Fade in active background
         setTimeout(() => {
             activeBg.style.opacity = "1";
         }, 50);
-    }    navLinks.forEach((li) => {
-        li.addEventListener("click", function () {
-            document.querySelector("nav ul li.active")?.classList.remove("active");
-            this.classList.add("active");
-            moveActiveBg(this);
-        });
+    }
+
+    // Handle back/forward navigation
+    window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.section) {
+            initializeNavigation();
+        }
     });
+
+    // Initialize navigation
+    initializeNavigation();
 
     // Efek muncul dengan opacity saat halaman pertama kali dimuat
     window.addEventListener("load", function () {
@@ -108,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Tambahkan efek fade-in setelah load
         setTimeout(() => {
             activeBg.style.opacity = "1";
-        }, 300); // Delay agar efek lebih natural
+        }, 300);
     });
 
     // Menyesuaikan kembali saat jendela di-resize tanpa animasi
@@ -134,8 +222,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
+/*====================================== Night Mode ====================================*/
 document.addEventListener('DOMContentLoaded', function() {
     const navItems = document.querySelectorAll('nav ul li');
     const activeBg = document.querySelector('.active-bg');
