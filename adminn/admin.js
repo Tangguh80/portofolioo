@@ -13,6 +13,19 @@ document.addEventListener("DOMContentLoaded", function() {
         contact: document.querySelector(".contact")
     };
 
+    // Sembunyikan active-bg sepenuhnya selama loading
+    activeBg.style.display = "none";
+    activeBg.style.opacity = "0";
+    activeBg.style.width = "0";
+
+    // Hide all containers immediately (except Work)
+    Object.keys(contentContainers).forEach(key => {
+        if (contentContainers[key]) {
+            contentContainers[key].style.display = key === 'work' ? 'block' : 'none';
+        }
+    });
+
+    // ... (fungsi-fungsi lainnya tetap sama seperti sebelumnya)
     // Fungsi untuk scroll langsung ke atas tanpa animasi
     function scrollToTopInstant() {
         window.scrollTo(0, 0);
@@ -20,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fungsi untuk mengupdate URL dan title
     function updateUrlAndTitle(section) {
-        // Update title
         const baseTitle = "Tangguh Sarwono • ";
         let newTitle = baseTitle;
         
@@ -43,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
         document.title = newTitle;
         
-        // Update URL tanpa reload halaman
         const newUrl = section.toLowerCase() === 'work' 
             ? window.location.pathname 
             : `${window.location.pathname}?section=${section}`;
@@ -58,47 +69,31 @@ document.addEventListener("DOMContentLoaded", function() {
         
         if (!section) return 'work';
         
-        // Bersihkan section dan cocokkan dengan yang valid
         section = section.toLowerCase().trim();
         
-        // Cari section yang valid yang cocok dengan awal string
         for (const validSection of validSections) {
             if (section.startsWith(validSection)) {
                 return validSection;
             }
         }
         
-        return 'work'; // Default jika tidak ada yang cocok
+        return 'work';
     }
-
-    // Hide all containers immediately (except Work)
-    Object.keys(contentContainers).forEach(key => {
-        if (contentContainers[key]) {
-            contentContainers[key].style.display = key === 'work' ? 'block' : 'none';
-        }
-    });
-
-    // Hide active-bg initially
-    activeBg.style.opacity = "0";
 
     // Function to update active content
     function updateContentDisplay(activeClass) {
-        // First hide all containers
         Object.values(contentContainers).forEach(container => {
             if (container) container.style.display = 'none';
         });
         
-        // Then show only the active one
         const activeKey = activeClass.toLowerCase();
         const activeContainer = contentContainers[activeKey];
         
         if (activeContainer) {
             activeContainer.style.display = 'block';
-            // Scroll langsung ke atas tanpa animasi
             scrollToTopInstant();
         }
         
-        // Update URL and title
         updateUrlAndTitle(activeClass);
     }
 
@@ -106,21 +101,25 @@ document.addEventListener("DOMContentLoaded", function() {
     function moveActiveBg(target, animate = true) {
         if (!target) return;
 
+        // Aktifkan display sebelum memposisikan
+        activeBg.style.display = "block";
+        
+        if (!animate) {
+            activeBg.style.transition = 'none';
+        }
+
         requestAnimationFrame(() => {
             setTimeout(() => {
-                if (!animate) {
-                    activeBg.style.transition = "none";
-                } else {
-                    activeBg.style.transition = "transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.5s ease-in-out";
-                }
-
-                activeBg.style.width = `${target.offsetWidth}px`;
-                activeBg.style.transform = `translateX(${target.offsetLeft}px)`;
-
+                const width = target.offsetWidth;
+                const left = target.offsetLeft;
+                
+                activeBg.style.width = `${width}px`;
+                activeBg.style.transform = `translateX(${left}px)`;
+                
                 if (!animate) {
                     setTimeout(() => {
                         activeBg.style.transition = "transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.5s ease-in-out";
-                    }, 50);
+                    }, 10);
                 }
             }, 10);
         });
@@ -129,13 +128,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Click handler for nav items
     navLinks.forEach(li => {
         li.addEventListener("click", function() {
-            // Remove active class from all nav items
             navLinks.forEach(item => item.classList.remove("active"));
-            
-            // Add active class to clicked item
             this.classList.add("active");
             
-            // Update UI
             moveActiveBg(this);
             const activeContent = this.textContent.trim();
             updateContentDisplay(activeContent);
@@ -147,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const currentSection = getValidSectionFromUrl();
         let activeNavItem;
         
-        // Find the corresponding nav item
         navLinks.forEach(li => {
             const linkText = li.textContent.trim().toLowerCase();
             if (linkText === currentSection) {
@@ -155,23 +149,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
         
-        // If no matching section found, default to Work
         if (!activeNavItem) {
             activeNavItem = document.querySelector("nav ul li:first-child");
         }
         
-        // Set active class
         navLinks.forEach(item => item.classList.remove("active"));
         activeNavItem.classList.add("active");
         
-        // Update UI
+        // Update UI without animation first
         moveActiveBg(activeNavItem, false);
         updateContentDisplay(activeNavItem.textContent.trim());
-        
-        // Fade in active background
-        setTimeout(() => {
-            activeBg.style.opacity = "1";
-        }, 50);
     }
 
     // Handle back/forward navigation
@@ -184,26 +171,29 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize navigation
     initializeNavigation();
 
-    // Efek muncul dengan opacity saat halaman pertama kali dimuat
-    window.addEventListener("load", function () {
+    // Adjust on window resize
+    window.addEventListener("resize", function() {
         const activeLi = document.querySelector("nav ul li.active");
         if (activeLi) {
             moveActiveBg(activeLi, false);
-        } else {
-            console.warn("Tidak ada elemen <li> dengan class 'active' ditemukan.");
         }
-
-        // Tambahkan efek fade-in setelah load
-        setTimeout(() => {
-            activeBg.style.opacity = "1";
-        }, 300);
     });
 
-    // Menyesuaikan kembali saat jendela di-resize tanpa animasi
-    window.addEventListener("resize", function () {
-        moveActiveBg(document.querySelector("nav ul li.active"), false);
+    // Tampilkan active-bg dengan fade-in setelah semua konten selesai dimuat
+    window.addEventListener("load", function() {
+        const activeLi = document.querySelector("nav ul li.active");
+        if (activeLi) {
+            // Pertama pastikan posisi dan ukuran sudah benar
+            moveActiveBg(activeLi, false);
+            
+            // Kemudian fade-in
+            setTimeout(() => {
+                activeBg.style.opacity = "1";
+            }, 300);
+        }
     });
 });
+
 
 
 
