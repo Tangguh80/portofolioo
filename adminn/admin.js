@@ -429,3 +429,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+
+
+
+
+
+
+
+// Theme Color Switcher based on Day/Night Mode
+document.addEventListener("DOMContentLoaded", function() {
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    const root = document.documentElement;
+    
+    function updateThemeColor() {
+        const isNightMode = root.classList.contains('night-mode');
+        themeColorMeta.content = isNightMode ? '#233831' : '#ede7de';
+    }
+    
+    // Initial check
+    updateThemeColor();
+    
+    // Observe class changes on root element
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+                updateThemeColor();
+            }
+        });
+    });
+    
+    observer.observe(root, {
+        attributes: true
+    });
+});
+
+
+
+
