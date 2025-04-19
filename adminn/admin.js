@@ -1,3 +1,12 @@
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  
+
+});
+
 /*====================================== Navigasi Navbar utama ====================================*/
 document.addEventListener("DOMContentLoaded", function() {
     // Daftar section yang valid
