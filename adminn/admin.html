@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="manifest" href="manifest.json">
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registered:', reg))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    }
+    </script>
+
+    
     <meta charset="UTF-8">
     <link rel="preload" href="fonts/acorn.woff" as="font">
     <link rel="preload" href="fonts/gt.woff" as="font">
