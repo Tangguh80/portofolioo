@@ -10,29 +10,34 @@
     }
     </script>
 
-    
+
     <meta charset="UTF-8">
     <link rel="preload" href="fonts/acorn.woff" as="font">
     <link rel="preload" href="fonts/gt.woff" as="font">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="skill.css">
+    <link rel="stylesheet" href="Contact.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="https://i.pinimg.com/736x/c6/c6/af/c6c6afbe01b8e8418e910a5e58c8f301.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ede7de">
     <title>Tangguh Sarwono • Engineer</title>
 
-
+ <!----=========================================== Navigasi ========================================================== -->
     <nav>
         <ul>
             <div class="active-bg"></div>
             <li class="active"><a ><ion-icon name="flash-outline"></ion-icon> Work</a></li>
             <li><a>About</a></li>
             <li><a>Skill</a></li>
-            <li><a>Contact</a></li>
+            <li><a>Certificate</a></li>
         </ul>
     </nav>
+
+    <div class="open-Bot">
+        <ion-icon name="chatbubble-ellipses"></ion-icon>
+      </div>
 
 
 <link rel="preload" as="image" href="https://github.com/Tangguh80/portofolioo/blob/main/adminn/image/foto1.png?raw=true">
@@ -47,7 +52,35 @@
 </head>
 
 <body>
+ <!----=========================================== ChatBot ========================================================== -->
+ <div class="container-Bot">
 
+    <div class="container-profile">
+        <img src="https://i.pinimg.com/736x/82/e7/4e/82e74e577e47b0d0f2757b73f9b436f1.jpg" alt="Profile" class="profile-img">
+        <div class="profile-text">
+            <div class="profile-name">Tangguh Bot</div>
+            <div class="profile-desc">Beri Saya Pertanyaan Anda</div>
+        </div>
+            <button class="close-btn-bot">
+                <ion-icon name="close"></ion-icon>
+            </button>
+    </div>
+    
+    <div class="container-chat">
+        <div id="Bot-Answer" class="Bot-Answer">Hai!</div>
+        <div id="Bot-Answer" class="Bot-Answer">Saya Tangguh Bot. Saya di sini untuk membantu Anda dengan informasi tentang portofolio Tangguh Sarwono.</div>
+        <div id="Bot-Answer" class="Bot-Answer">Apa yang ingin Anda ketahui?</div>
+    
+        <button class="Selection-user">Hanya menyapa</button>
+        <button class="Selection-user">Tentang Latar Belakang Pendidikan</button>
+        <button class="Selection-user">Pengalaman Kerja/Praktik</button>
+        <button class="Selection-user">Keahlian Teknis</button>
+        <button class="Selection-user">Proyek yang Pernah Dikerjakan</button>
+        <button class="Selection-user">Ingin hubungi langsung</button>
+    </div>
+    
+
+</div>
 
  <!----=========================================== About ========================================================== -->
 
@@ -524,5 +557,6 @@
 
     <script src="about.js"></script>
     <script src="admin.js"></script>
+    <script src="Contact.js"></script>
 </body>
 </html>
