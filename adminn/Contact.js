@@ -9,11 +9,10 @@ function handleBodyScrollLock(lock) {
     document.body.classList.toggle('no-scroll', lock);
 
     if (lock) {
-      // Scroll ke atas supaya browser address bar hilang
-      window.scrollTo(0, 0);
-      document.documentElement.requestFullscreen?.(); // Coba masuk mode fullscreen (jika browser support)
-    } else {
-      document.exitFullscreen?.(); // Keluar dari fullscreen
+      // Scroll paksa supaya address bar browser sembunyi
+      setTimeout(() => {
+        window.scrollTo(0, 1); // Sedikit scroll
+      }, 50);
     }
   }
 }
@@ -72,6 +71,7 @@ window.addEventListener('resize', () => {
     handleBodyScrollLock(false);
   }
 });
+
 
 
 
