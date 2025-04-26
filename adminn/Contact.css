@@ -362,10 +362,12 @@ body {
 
 @media (max-width: 767px) {
 
-    .no-scroll {
-        overflow: hidden;
-        height: 100%;
-      }
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+}
       
     .open-Bot {
         bottom: 20px;
@@ -390,9 +392,10 @@ body {
 
 
 
-    .container-Bot {
+      .container-Bot {
         width: 100%;
         height: 100vh;
+        height: -webkit-fill-available; /* For mobile browsers */
         max-width: 100%;
         min-width: 100%;
         right: 0;
@@ -400,6 +403,8 @@ body {
         border-radius: 0;
         border: none;
         box-shadow: none;
+        position: fixed;
+        overflow-y: auto;
     }
 
     .container-profile {
