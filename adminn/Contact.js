@@ -7,17 +7,27 @@ let scrollTimeout;
 function handleBodyScrollLock(lock) {
   if (window.innerWidth <= 767) {
     document.body.classList.toggle('no-scroll', lock);
+
+    if (lock) {
+      // Scroll ke atas supaya browser address bar hilang
+      window.scrollTo(0, 0);
+      document.documentElement.requestFullscreen?.(); // Coba masuk mode fullscreen (jika browser support)
+    } else {
+      document.exitFullscreen?.(); // Keluar dari fullscreen
+    }
   }
 }
 
+// Buka bot
 openBotBtn.addEventListener('click', () => {
   containerBot.classList.remove('hide');
   containerBot.classList.add('show');
   containerBot.style.display = 'flex';
   openBotBtn.style.display = 'none';
-  handleBodyScrollLock(true); // Lock scroll
+  handleBodyScrollLock(true);
 });
 
+// Tutup bot
 closeBotBtn.addEventListener('click', () => {
   containerBot.classList.remove('show');
   containerBot.classList.add('hide');
@@ -25,11 +35,11 @@ closeBotBtn.addEventListener('click', () => {
   setTimeout(() => {
     containerBot.style.display = 'none';
     openBotBtn.style.display = 'flex';
-    handleBodyScrollLock(false); // Unlock scroll
+    handleBodyScrollLock(false);
   }, 400);
 });
 
-// Scroll behavior
+// Scroll behavior untuk tombol
 window.addEventListener('scroll', () => {
   if (containerBot.classList.contains('show')) {
     openBotBtn.style.display = 'none';
@@ -54,7 +64,7 @@ window.addEventListener('scroll', () => {
   }, 200);
 });
 
-// Jika ukuran layar berubah saat bot aktif, cek ulang scroll lock
+// Cek ukuran layar kalau resize
 window.addEventListener('resize', () => {
   if (containerBot.classList.contains('show')) {
     handleBodyScrollLock(true);
@@ -62,6 +72,8 @@ window.addEventListener('resize', () => {
     handleBodyScrollLock(false);
   }
 });
+
+
 
 
 
