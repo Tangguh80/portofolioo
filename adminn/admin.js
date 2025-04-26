@@ -10,7 +10,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 /*====================================== Navigasi Navbar utama ====================================*/
 document.addEventListener("DOMContentLoaded", function() {
     // Daftar section yang valid
-    const validSections = ['work', 'about', 'skill', 'contact'];
+    const validSections = ['work', 'about', 'skill', 'certificate'];
     
     // Get all elements
     const navLinks = document.querySelectorAll("nav ul li");
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         work: document.querySelector(".Work"),
         about: document.querySelector(".About"),
         skill: document.querySelector(".Skiil"),
-        contact: document.querySelector(".contact")
+        certificate: document.querySelector(".certificate")
     };
 
     // Sembunyikan active-bg sepenuhnya selama loading
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
             case 'skill':
                 newTitle += "Skill";
                 break;
-            case 'contact':
-                newTitle += "Contact";
+            case 'certificate':
+                newTitle += "certificate";
                 break;
             default:
                 newTitle += "Engineer";
