@@ -7,26 +7,17 @@ let scrollTimeout;
 function handleBodyScrollLock(lock) {
   if (window.innerWidth <= 767) {
     document.body.classList.toggle('no-scroll', lock);
-
-    if (lock) {
-      // Scroll paksa supaya address bar browser sembunyi
-      setTimeout(() => {
-        window.scrollTo(0, 1); // Sedikit scroll
-      }, 50);
-    }
   }
 }
 
-// Buka bot
 openBotBtn.addEventListener('click', () => {
   containerBot.classList.remove('hide');
   containerBot.classList.add('show');
   containerBot.style.display = 'flex';
   openBotBtn.style.display = 'none';
-  handleBodyScrollLock(true);
+  handleBodyScrollLock(true); // Lock scroll
 });
 
-// Tutup bot
 closeBotBtn.addEventListener('click', () => {
   containerBot.classList.remove('show');
   containerBot.classList.add('hide');
@@ -34,11 +25,11 @@ closeBotBtn.addEventListener('click', () => {
   setTimeout(() => {
     containerBot.style.display = 'none';
     openBotBtn.style.display = 'flex';
-    handleBodyScrollLock(false);
+    handleBodyScrollLock(false); // Unlock scroll
   }, 400);
 });
 
-// Scroll behavior untuk tombol
+// Scroll behavior
 window.addEventListener('scroll', () => {
   if (containerBot.classList.contains('show')) {
     openBotBtn.style.display = 'none';
@@ -63,7 +54,7 @@ window.addEventListener('scroll', () => {
   }, 200);
 });
 
-// Cek ukuran layar kalau resize
+// Jika ukuran layar berubah saat bot aktif, cek ulang scroll lock
 window.addEventListener('resize', () => {
   if (containerBot.classList.contains('show')) {
     handleBodyScrollLock(true);
@@ -71,7 +62,6 @@ window.addEventListener('resize', () => {
     handleBodyScrollLock(false);
   }
 });
-
 
 
 
