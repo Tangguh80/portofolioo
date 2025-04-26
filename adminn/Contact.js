@@ -71,8 +71,6 @@ window.addEventListener('resize', () => {
 
 
 
-
-
 /*====================================== Bot Model ====================================*/
 document.addEventListener("DOMContentLoaded", function () {
     const selections = document.querySelectorAll(".Selection-user");
@@ -80,10 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const botResponses = {
         "Hanya menyapa": [
-            "Halo juga!",
+            "Halo juga! 😊",
             "Terima kasih telah mengunjungi portofolio saya.",
             "Semoga Anda menemukan informasi yang bermanfaat.",
-            "Ada yang bisa saya bantu?"
+            "Ada yang bisa saya bantu? 🤔"
         ],
         "Tentang Latar Belakang Pendidikan": [
             "Saya lulusan D3 Teknik Listrik dari Politeknik Negeri Cilacap (2023-2026) dengan spesialisasi di:",
@@ -115,22 +113,26 @@ document.addEventListener("DOMContentLoaded", function () {
             "Ingin Melihat lebih lengkap?"
         ],
         "Ingin hubungi langsung": [
-            "Baik Saya senang anda mau Menghubungi saya.",
+            "Baik Saya senang anda mau Menghubungi saya. 🤗",
             "Silahkan pilih metode yang mau dihubungi:"
         ]
     };
 
     const contactOptions = {
         "Email": [
-            "Silahkan kirim pesan ke tangguh880@gmail.com"
+            "Silahkan kirimkan pesan ke email:",
+            "tangguh880@gmail.com",
+            "Ada yang bisa saya Bantu lagi? 🤔"
         ],
         "WhatsApp": [
             "Silahkan Kirim pesan atau nomor telpon di bawah:",
-            "0834243432"
+            "085802494720",
+            "Ada yang bisa saya Bantu lagi? 🤔"
         ],
         "Telegram": [
             "Silahkan Chat ke link telegram saya:",
-            "https://t.me/03483843"
+            "https://t.me/085802494720",
+            "Ada yang bisa saya Bantu lagi? 🤔"
         ]
     };
 
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Lalu scroll paling bawah"
         ],
         "Opsi Lainnya": [
-            "Ada yang bisa saya bantu lagi?"
+            "Ada yang bisa saya bantu lagi? 🤔"
         ]
     };
 
