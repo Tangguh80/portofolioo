@@ -1,0 +1,139 @@
+{
+  "personal_information": {
+    "name": "TANGGUH SARWONO",
+    "address": "Jl. Ketapang No 100, RT05 RW07, Kecamatan Cilacap Utara, Kelurahan Kebonmanis, Kabupaten Cilacap",
+    "phone": "+62858-0249-4720",
+    "email": "Tangguh880@gmail.com",
+    "website": "https://tangguh80.github.io/Portofolio"
+  },
+  "about": "Fresh Graduate di bidang Teknik Listrik dengan keahlian dalam instalasi tenaga listrik, sistem kontrol berbasis PLC, dan manajemen distribusi daya. Berpengalaman dalam analisis dan inspeksi kelayakan bangunan untuk Sertifikat Laik Fungsi (SLF) serta memiliki pemahaman mendalam tentang sistem pendingin dan instalasi listrik industri.",
+  "work_experience": [
+    {
+      "company": "PT Panasonic Manufacturing Indonesia (Pembuatan AC)",
+      "period": "Februari - Mei 2022",
+      "responsibilities": [
+        "Mengoperasikan oven dan mesin press untuk proses pembuatan evaporator AC",
+        "Pemasangan Kompresor pada Outdoor AC",
+        "Melaksanakan pengecekan, pencatatan, dan pengemasan (O/I Book & Packing) unit outdoor AC",
+        "Mengkoordinasikan distribusi komponen produksi AC ke lini produksi"
+      ]
+    },
+    {
+      "company": "PT Panasonic Gobel Dharma Nusantara",
+      "period": "Juni - Agustus 2022",
+      "responsibilities": [
+        "Melakukan Pemasangan AC pada Rumah Konsumen",
+        "Mengganti led TV Konsumen yang rusak",
+        "Memperbaiki Dispenser konsumen yang mengalami kerusakan",
+        "Mengisi Freon AC konsumen yang mengalami kerusakan",
+        "Melakukan cuci AC konsumen yang kotor"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "SMKN NUSAWUNGU",
+      "period": "2020 - 2023",
+      "major": "Teknik Instalasi Tenaga Listrik",
+      "achievements": [
+        "Mendesain dan memasang instalasi listrik di rumah",
+        "Mempelajari jaringan distribusi listrik tegangan rendah dan menengah",
+        "Mengoperasikan dan merancang sistem kontrol menggunakan PLC"
+      ]
+    },
+    {
+      "institution": "Kelas Pelatihan Sistem Pendingin & AC – PT Panasonic",
+      "achievements": [
+        "Mengenal regulasi dan standar industri dalam bidang pendingin",
+        "Prosedur pemasangan unit AC split, window, dan inverter",
+        "Teknik penyambungan pipa refrigeran dan pengecekan kebocoran",
+        "Pengisian dan pemulihan refrigeran sesuai standar keselamatan"
+      ]
+    },
+    {
+      "institution": "POLITEKNIK NEGERI CILACAP",
+      "period": "2023 - Sekarang",
+      "major": "D3 - Teknik Listrik",
+      "achievements": [
+        "Dasar-dasar matematika yang diterapkan dalam teknik listrik",
+        "Mempelajari jaringan distribusi listrik tegangan rendah dan menengah",
+        "Penggunaan elektronika dalam pengendalian daya listrik",
+        "Pemrograman dan Perancangan panel control basis Programmable Logic Controller",
+        "Prinsip kerja dan jenis-jenis mesin listrik",
+        "Penerapan K3 dalam industri"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "role": "Media Organizer - UKM Logic Robotic",
+      "responsibilities": [
+        "Membuat konten menarik (foto, video, artikel) untuk meningkatkan visibilitas UKM",
+        "Mengambil foto/video selama acara robotic untuk laporan dan media sosial",
+        "Desain grafis untuk poster, brosur, dan materi promosi"
+      ]
+    },
+    {
+      "role": "Konsultan Pembuatan Laporan SLF bangunan",
+      "responsibilities": [
+        "Mengumpulkan data spesifikasi teknis bangunan",
+        "Memeriksa instalasi listrik, panel, grounding, dan proteksi listrik",
+        "Meninjau sistem hydrant, alarm kebakaran, dan jalur evakuasi",
+        "Menggunakan alat ukur untuk parameter keamanan (tegangan listrik, lux cahaya)",
+        "Inspeksi struktur, kelistrikan, sanitasi, dan sistem keselamatan",
+        "Membuat gambar teknis dengan AutoCAD berdasarkan pemeriksaan",
+        "Pembuatan Laporan SLF untuk dinas terkait"
+      ]
+    }
+  ],
+  "trainings": [
+    {
+      "program": "Junior Web Developer - VSGA Kominfo",
+      "period": "Juli - Agustus 2023",
+      "skills": [
+        "HTML, CSS, JavaScript dasar",
+        "Pembuatan website berbasis PHP untuk penyimpanan data",
+        "Hosting menggunakan cPanel, Netlify, Vercel, Firebase",
+        "Desain website berbasis Bootstrap",
+        "Implementasi AJAX dan Fetch API",
+        "Membuat dan mengelola CRUD database"
+      ]
+    },
+    {
+      "program": "Microsoft AI Beginner - FGA Komdigi",
+      "period": "Maret - April 2025",
+      "skills": [
+        "Layanan AI Microsoft Azure (machine learning, computer vision, NLP)",
+        "Pengenalan cloud computing dan penerapan industri",
+        "Manajemen Azure dan alat pengelolaan layanan"
+      ]
+    }
+  ],
+  "technical_skills": {
+    "electrical": [
+      "Instalasi Listrik rumah dan industri",
+      "Sistem Kontrol Berbasis PLC",
+      "Manajemen Distribusi Daya",
+      "Pemeliharaan dan Perbaikan Sistem Listrik",
+      "Inspeksi Kelayakan Bangunan (SLF)",
+      "Keselamatan dan Standar Kelistrikan (PUIL)",
+      "K3"
+    ],
+    "other": [
+      "Sistem Pendingin",
+      "CAD",
+      "Autocad"
+    ]
+  },
+  "languages": [
+    {
+      "language": "Bahasa Indonesia",
+      "proficiency": "Native"
+    },
+    {
+      "language": "English",
+      "proficiency": "Basic/Intermediate"
+    }
+  ],
+  "certification": "Semua data yang tertera dalam biodata ini adalah benar dan dapat dipertanggungjawabkan secara hukum. Cilacap, 9 Maret 2025"
+}
