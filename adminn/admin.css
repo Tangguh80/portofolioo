@@ -1460,7 +1460,7 @@ nav ul li a ion-icon {
             align-items: center; /* Supaya tombol tetap rata tengah */
             gap: 50px; /* Jarak antar tombol */
             margin-bottom: 50px;
-            margin-top: -200px;
+            margin-top: -230px;
         }
 
         .big-btn,
