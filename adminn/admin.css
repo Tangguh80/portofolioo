@@ -76,8 +76,31 @@ body {
     --hijaumuda2:#ccdfb9;
 
     transition: background-color 0.3s ease, color 0.3s ease;
-  }
 
+
+  /* Light Mode Rainbow Colors */
+  --rainbow1: #e0dfb4;
+  --rainbow2: #e0dec9;
+  --rainbow3: #e1dbd0;
+  --rainbow4: #e3dace;
+  --rainbow5: #dbdcb9;
+  --rainbow6: #e5d7c0;
+  --rainbow7: #e6d5ce;
+  --rainbow8: #d5dab2;
+  --rainbow9: #e6d5ce;
+  --rainbow10: #e7d3cc;
+  --rainbow11: #e0dfb4;
+  --rainbow12: #e3dace;
+  --rainbow13: #e6d5ce;
+  --rainbow14: #dbdcb9;
+  --rainbow15: #e5d7c0;
+  --rainbow16: #d5dab2;
+  --rainbow17: #e0dec9;
+  --rainbow18: #e7d3cc;
+  --rainbow19: #e1dbd0;
+  --rainbow20: #e0dfb4;
+  --cream-target: hsla(36, 31%, 90%, 1);
+}
 
 
 
@@ -89,6 +112,36 @@ body {
     --hijaumuda2:#026d5f;
     --Krem: #233831;
     --iconnightmode:#233831;
+
+
+  /* Night Mode Rainbow Colors - Organized for smooth gradient */
+  --rainbow1: #2e4335;
+  --rainbow2: #32554b;
+  --rainbow3: #335649;
+  --rainbow4: #3c634c;
+  --rainbow5: #3e6053;
+  --rainbow6: #3e6153;
+  --rainbow7: #426a2f;
+  --rainbow8: #456940;
+  --rainbow9: #465d2e;
+  --rainbow10: #4a6c56;
+  --rainbow11: #4d6e57;
+  --rainbow12: #534f30;
+  --rainbow13: #54722c;
+  --rainbow14: #56532e;
+  --rainbow15: #5c542d;
+  --rainbow16: #5e7c3e;
+  --rainbow17: #605c47;
+  --rainbow18: #615941;
+  --rainbow19: #375d4f;
+  --rainbow20: #263e31;
+  
+  /* Dark green transition */
+  --cream-target: #233831;
+  
+  /* Text and background colors */
+  --night-text: #f0f0f0;
+  --night-bg: #121212;
 }
 
 /*====================================== Navigasi ====================================*/
@@ -163,44 +216,54 @@ nav ul li a ion-icon {
 
 
 /*====================================== Background rainbow ====================================*/
-@keyframes gradient-animation { 
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .rainbow {
-    position: relative;
-    width: 100%;
-    min-height: auto;
-    text-align: center;
-    background: linear-gradient(
-        135deg, 
-        var(--hijaumuda2) 0%, 
-        var(--Krem) 20%, 
-        var(--hijaumuda2) 40%, 
-        var(--Krem) 60%, 
-        var(--hijaumuda2) 80%, 
-        var(--Krem) 100%
-    );
-    background-size: 1000% 1000%;
-    animation: gradient-animation 10s infinite ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--rainbow1), var(--rainbow2), var(--rainbow3), var(--rainbow4), var(--rainbow5),
+    var(--rainbow6), var(--rainbow7), var(--rainbow8), var(--rainbow9), var(--rainbow10),
+    var(--rainbow11), var(--rainbow12), var(--rainbow13), var(--rainbow14), var(--rainbow15),
+    var(--rainbow16), var(--rainbow17), var(--rainbow18), var(--rainbow19), var(--rainbow20)
+  );
+  background-size: 2000% 2000%;
+  animation: gradient-animation 30s infinite ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
 }
 
-
-/* Pseudo-element untuk menjaga jarak bawah */
 .rainbow::after {
-    content: '';
-    position: relative;
-    display: block;
-    width: 100%;
-    min-height: 15vh; /* Jaga jarak bawah tetap */
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--Krem)); 
-    pointer-events: none; /* Agar tidak mengganggu interaksi */
+  content: '';
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 100vh; /* Lebih tinggi untuk transisi halus */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--cream-target) 1%, transparent) 1%,
+    color-mix(in srgb, var(--cream-target) 5%, transparent) 5%,
+    color-mix(in srgb, var(--cream-target) 10%, transparent) 10%,
+    color-mix(in srgb, var(--cream-target) 30%, transparent) 20%,
+    color-mix(in srgb, var(--cream-target) 50%, transparent) 40%,
+    color-mix(in srgb, var(--cream-target) 70%, transparent) 60%,
+    color-mix(in srgb, var(--cream-target) 90%, transparent) 80%,
+    var(--cream-target) 100%
+  );
+  backdrop-filter: blur(15px);
 }
+
+
 
 .container-judul {
     position: relative;
@@ -324,6 +387,7 @@ nav ul li a ion-icon {
     gap: 0px;
     justify-content: center;
     align-items: center;
+    margin-top: -580px;
     margin-bottom: 150px;
 
     /* Animasi */
@@ -1308,8 +1372,8 @@ nav ul li a ion-icon {
             width: 100%;
             min-height: auto; 
             text-align: center;
-            background-size: 300% 300%;
-            animation: gradient-animation 10s infinite linear;
+            background-size: 3000% 3000%;
+            animation: gradient-animation 30s infinite linear;
             display: flex;
             flex-direction: column;
             justify-content: flex-end; /* Menjaga elemen tetap di bawah */
@@ -1321,7 +1385,7 @@ nav ul li a ion-icon {
             position: relative;
             display: block;
             width: 100%;
-            min-height: 15vh; /* Jaga jarak bawah tetap */
+            min-height: 50vh; /* Jaga jarak bawah tetap */
             pointer-events: none; /* Agar tidak mengganggu interaksi */
         }
 
@@ -1396,6 +1460,7 @@ nav ul li a ion-icon {
             align-items: center; /* Supaya tombol tetap rata tengah */
             gap: 50px; /* Jarak antar tombol */
             margin-bottom: 50px;
+            margin-top: -200px;
         }
 
         .big-btn,
