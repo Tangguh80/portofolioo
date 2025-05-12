@@ -284,55 +284,57 @@ body {
 
 
 /*====================================== Certificate card ====================================*/
-        .certificate {
-            position: relative;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            padding: 0px 0px;
-            text-align: center;
-            height: auto;
-            background-color: rgba(255, 0, 0, 0); 
 
 
-                /* Animasi */
-            opacity: 0;
-            transform: translateY(-30px); 
-            animation: fadeDown 0.3s ease-out forwards;
-            animation-delay: 0.5s; 
-        }
 
 
-        .cert-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-                -webkit-tap-highlight-color: transparent;
-        }
+.cert-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    -webkit-tap-highlight-color: transparent;
 
-        .cert-card {
-            position: relative;
-            width: 330px;
-            height: 330px;
-            background: var(--card);
-            border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: 1;
-            perspective: 1000px;
-            transform-style: preserve-3d;
-            /* Golden gradient border */
-            border: double 4px transparent;
-            background-clip: padding-box, border-box;
-            background-origin: border-box;
-            background-image: linear-gradient(var(--card), var(--card)), 
-                            linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FFD700 100%);
-        }
+    /* Animasi muncul */
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeDown 0.4s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cert-card {
+    position: relative;
+    width: 330px;
+    height: 330px;
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+
+    /* Golden gradient border */
+    border: double 4px transparent;
+    background-clip: padding-box, border-box;
+    background-origin: border-box;
+    background-image: 
+        linear-gradient(var(--card), var(--card)),
+        linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FFD700 100%);
+}
+
 
         .cert-card::before {
             content: '';
