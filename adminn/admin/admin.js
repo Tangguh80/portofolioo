@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    
     // ... (fungsi-fungsi lainnya tetap sama seperti sebelumnya)
     // Fungsi untuk scroll langsung ke atas tanpa animasi
     function scrollToTopInstant() {
