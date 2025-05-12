@@ -99,7 +99,9 @@ body {
   --rainbow18: #e7d3cc;
   --rainbow19: #e1dbd0;
   --rainbow20: #e0dfb4;
-  --cream-target: hsla(36, 31%, 90%, 1);
+  --cream-target: rgba(237, 231, 222, 0);
+
+      transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -115,29 +117,29 @@ body {
 
 
   /* Night Mode Rainbow Colors - Organized for smooth gradient */
-  --rainbow1: #2e4335;
-  --rainbow2: #32554b;
-  --rainbow3: #335649;
-  --rainbow4: #3c634c;
-  --rainbow5: #3e6053;
-  --rainbow6: #3e6153;
+  --rainbow1: #26703f;
+  --rainbow2: #216551;
+  --rainbow3: #793179;
+  --rainbow4: #34734e;
+  --rainbow5: #2b7156;
+  --rainbow6: #6e713e;
   --rainbow7: #426a2f;
   --rainbow8: #456940;
   --rainbow9: #465d2e;
   --rainbow10: #4a6c56;
-  --rainbow11: #4d6e57;
+  --rainbow11: #41726c;
   --rainbow12: #534f30;
   --rainbow13: #54722c;
   --rainbow14: #56532e;
   --rainbow15: #5c542d;
-  --rainbow16: #5e7c3e;
+  --rainbow16: #608e2f;
   --rainbow17: #605c47;
   --rainbow18: #615941;
-  --rainbow19: #375d4f;
-  --rainbow20: #263e31;
+  --rainbow19: #416d99;
+  --rainbow20: #7f4c34;
   
   /* Dark green transition */
-  --cream-target: #233831;
+  --cream-target: #23383100;
   
   /* Text and background colors */
   --night-text: #f0f0f0;
@@ -244,25 +246,25 @@ nav ul li a ion-icon {
 
 .rainbow::after {
   content: '';
-  position: relative;
+  position: absolute; /* Ubah dari relative ke absolute */
   display: block;
   width: 100%;
-  min-height: 100vh; /* Lebih tinggi untuk transisi halus */
+  min-height: 65vh;
   background: linear-gradient(
     to bottom,
     transparent 0%,
     color-mix(in srgb, var(--cream-target) 1%, transparent) 1%,
     color-mix(in srgb, var(--cream-target) 5%, transparent) 5%,
     color-mix(in srgb, var(--cream-target) 10%, transparent) 10%,
-    color-mix(in srgb, var(--cream-target) 30%, transparent) 20%,
     color-mix(in srgb, var(--cream-target) 50%, transparent) 40%,
-    color-mix(in srgb, var(--cream-target) 70%, transparent) 60%,
-    color-mix(in srgb, var(--cream-target) 90%, transparent) 80%,
+    color-mix(in srgb, var(--cream-target) 70%, transparent) 70%,
+    color-mix(in srgb, var(--cream-target) 90%, transparent) 90%,
     var(--cream-target) 100%
   );
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(0px);
+  bottom: 0px; /* Pastikan elemen berada di bagian bawah */
+  z-index: 0;
 }
-
 
 
 .container-judul {
@@ -305,6 +307,7 @@ nav ul li a ion-icon {
     opacity: 0;
     transform: translateY(-20px); /* Mulai dari atas */
     animation: fadeDown 0.4s ease-out forwards;
+    z-index: 1;
 }
 
 
@@ -336,7 +339,7 @@ nav ul li a ion-icon {
     right: 0;
     width: clamp(25px, 5vw, 80px);
     height: auto;
-
+    z-index: 1;
  
     opacity: 0;
     animation: fadeIn 0.5s ease-out forwards;
@@ -351,7 +354,7 @@ nav ul li a ion-icon {
     margin-left: 15%;
     width: clamp(25px, 5vw, 80px);
     height: auto;
-
+    z-index: 1;
     /* Efek animasi */
     opacity: 0;
     animation: fadeIn 0.5s ease-out forwards;
@@ -386,8 +389,9 @@ nav ul li a ion-icon {
     display: flex;
     gap: 0px;
     justify-content: center;
+    background-color: rgba(255, 0, 0, 0);
     align-items: center;
-    margin-top: -580px;
+    margin-top: 80px;
     margin-bottom: 150px;
 
     /* Animasi */
@@ -1377,23 +1381,25 @@ nav ul li a ion-icon {
             display: flex;
             flex-direction: column;
             justify-content: flex-end; /* Menjaga elemen tetap di bawah */
+            z-index: 0;
         }
         
         /* Pseudo-element untuk menjaga jarak bawah */
         .rainbow::after {
             content: '';
-            position: relative;
+            position: absolute;
             display: block;
             width: 100%;
-            min-height: 50vh; /* Jaga jarak bawah tetap */
+            min-height: 30vh; /* Jaga jarak bawah tetap */
             pointer-events: none; /* Agar tidak mengganggu interaksi */
+            bottom: 0px;
         }
 
 
         .container-judul {
             position: relative;
-            margin-top: 150px;
-            margin-bottom: -70px;
+            margin-top: 120px;
+            margin-bottom: 0px;
             text-align: center;
             height: auto;
             display: flex;
@@ -1401,6 +1407,7 @@ nav ul li a ion-icon {
             justify-content: center;
             align-items: center;
             background-color: rgba(255, 0, 0, 0); 
+            z-index: 1;
         }
         
 
@@ -1424,6 +1431,7 @@ nav ul li a ion-icon {
             max-width: 600px;
             margin-left: 30px;
             margin-right: 30px;
+            z-index: 1;
         }
 
 
@@ -1460,7 +1468,8 @@ nav ul li a ion-icon {
             align-items: center; /* Supaya tombol tetap rata tengah */
             gap: 50px; /* Jarak antar tombol */
             margin-bottom: 50px;
-            margin-top: -230px;
+            margin-top: 30px;
+            z-index: 0;
         }
 
         .big-btn,
