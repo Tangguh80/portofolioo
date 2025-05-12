@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Acorn';
-    src: url('/fonts/acorn.woff') format('woff');
+    src: url('fonts/acorn.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'GT';
-    src: url('/fonts/gt.woff') format('woff');
+    src: url('fonts/gt.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
