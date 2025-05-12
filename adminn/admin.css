@@ -99,7 +99,7 @@ body {
   --rainbow18: #e7d3cc;
   --rainbow19: #e1dbd0;
   --rainbow20: #e0dfb4;
-  --cream-target: rgba(237, 231, 222, 0);
+  --cream-target: rgb(237, 231, 222);
 
       transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -139,7 +139,7 @@ body {
   --rainbow20: #7f4c34;
   
   /* Dark green transition */
-  --cream-target: #23383100;
+  --cream-target: #233831;
   
   /* Text and background colors */
   --night-text: #f0f0f0;
