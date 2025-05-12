@@ -227,33 +227,41 @@
 }
 
 .fotosaya {
-    width: 100%; /* Perbesar lebar */
-    background-color: rgba(0, 255, 13, 0);
-    text-align: center;
-    padding: 0 50px 0px 50px;
+    width: 50%;
+    padding: 0 50px;
     box-sizing: border-box;
-    transition: all 0.3s ease; /* Tambahkan transition untuk animasi halus */
-    
+    text-align: center;
 }
 
 .fotosaya img {
     width: 100%;
-    height: auto; /* Jaga proporsi gambar */
-    min-height: 300px; /* Tambah tinggi minimum */
-    border-top-left-radius: 30%;
-    border-top-right-radius: 30%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid rgb(118, 118, 12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     opacity: 0;
-    transform: translateY(-20px); /* Mulai dari atas */
+    transform: translateY(-20px);
     animation: fadeDown 0.4s ease-out forwards;
-    animation-delay: 0.3s; /* P muncul setelah h1 */
+    animation-delay: 0.3s;
 }
+
+/* 🌟 Hover effect */
+.fotosaya img:hover {
+    transform: scale(1.05);
+        border: 6px solid yellow;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.6); /* Glow kuning */
+}
+
 
 
 
 .content-Deskripsi {
     position: relative;
-    width: 100%;
+    width: 50%;
     text-align: center;
     text-align: left;
     margin-left: 0px;
@@ -814,10 +822,9 @@
     }
     
     .fotosaya img {
-        width: 100%;
+        width: 80%;
         height: auto;
-        border-top-left-radius: 10%;
-        border-top-right-radius: 10%;
+        border-radius: 50%;
         transition: all 0.3s ease;
     }
     
