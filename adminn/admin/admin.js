@@ -25,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    
-    // ... (fungsi-fungsi lainnya tetap sama seperti sebelumnya)
     // Fungsi untuk scroll langsung ke atas tanpa animasi
     function scrollToTopInstant() {
         window.scrollTo(0, 0);
@@ -56,11 +54,25 @@ document.addEventListener("DOMContentLoaded", function() {
         
         document.title = newTitle;
         
-        const newUrl = section.toLowerCase() === 'work' 
-            ? window.location.pathname 
-            : `${window.location.pathname}?section=${section}`;
+        const currentParams = new URLSearchParams(window.location.search);
+        const chatParam = currentParams.get('chat');
         
-        history.pushState({ section }, '', newUrl);
+        let newUrl = window.location.pathname;
+        let params = [];
+        
+        if (section.toLowerCase() !== 'work') {
+            params.push(`section=${section}`);
+        }
+        
+        if (chatParam === 'open') {
+            params.push('chat=open');
+        }
+        
+        if (params.length > 0) {
+            newUrl += '?' + params.join('&');
+        }
+        
+        history.replaceState({ section }, '', newUrl);
     }
 
     // Fungsi untuk memvalidasi dan membersihkan section dari URL
@@ -81,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return 'work';
     }
 
+
     // Function to update active content
     function updateContentDisplay(activeClass) {
         Object.values(contentContainers).forEach(container => {
@@ -97,6 +110,12 @@ document.addEventListener("DOMContentLoaded", function() {
         
         updateUrlAndTitle(activeClass);
     }
+
+
+
+
+
+
 
     // Function to move active background
     function moveActiveBg(target, animate = true) {
@@ -138,6 +157,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+
+
+
+
+
     // Initialize based on URL or default to Work
     function initializeNavigation() {
         const currentSection = getValidSectionFromUrl();
@@ -161,6 +185,13 @@ document.addEventListener("DOMContentLoaded", function() {
         moveActiveBg(activeNavItem, false);
         updateContentDisplay(activeNavItem.textContent.trim());
     }
+
+
+
+
+
+
+
 
     // Handle back/forward navigation
     window.addEventListener('popstate', function(event) {
@@ -194,6 +225,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+
 
 
 
