@@ -65,12 +65,8 @@ body {
     --iconnightmode:#233831;
 
     --hijauBot:#d1ebe2;
-    --PutihBot:#314741;
+    --PutihBot:#3b5850;
 }
-
-
-
-
 
 
 
@@ -116,337 +112,462 @@ body {
 
 
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bubbleIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
 
 
+      @keyframes fadeOutDown {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+      }
 
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
 
+        .container-Bot {
+            position: fixed;
+            bottom: 40px;
+            right: 48px;
+            width: 350px;
+            min-width: 300px;
+            max-width: 400px;
+            height: 550px;
+            background-color: var(--BlurNavbar);
+            backdrop-filter: blur(10px);
+            border: 0.5px solid var(--hijauTua);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            transform-origin: bottom right;
+        }
 
-/* Existing container styles */
+        .container-Bot.show {
+            display: flex;
+            animation: fadeInUp 0.3s ease-out forwards;
+        }
 
-@keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+        .container-Bot.hide {
+            animation: fadeOutDown 0.3s ease-in forwards;
+        }
 
-  @keyframes fadeOutDown {
-    from {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-  }
-  
+        /* Profile header styles */
+        .container-profile {
+            display: flex;
+            align-items: center;
+            padding: 15px 15px;
+            background-color: var(--hijauTua);
+        }
 
-.container-Bot {
-    position: fixed;
-    bottom: 40px;
-    right: 48px;
-    width: 350px;
-    min-width: 300px;
-    max-width: 400px;
-    height: 550px; 
-    background-color: var(--BlurNavbar);
-    backdrop-filter: blur(10px);
-    border: 0.5px solid var(--hijauTua);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    padding: 0px;
-    overflow: hidden;
-    display: none;
-    flex-direction: column;
-}
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 12px;
+            border: 2px solid var(--Krem);
+            box-sizing: border-box;
+        }
 
+        .profile-text {
+            flex-grow: 1;
+        }
 
-.container-Bot.show {
-    display: flex;
-    animation: fadeInUp 0.4s ease-out forwards;
-  }
-  
-  .container-Bot.hide {
-    animation: fadeOutDown 0.4s ease-in forwards;
-  }
-  
+        .profile-name {
+            color: var(--Krem);
+            font-weight: bold;
+            font-family: "acorn", sans-serif;
+            letter-spacing: 1px;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
 
+        .profile-desc {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--Krem);
+            font-family: 'Poppins', sans-serif;
+        }
 
+        /* Close button styles */
+        .close-btn-bot {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--Krem);
+            padding: 5px;
+            border-radius: 20%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
 
+        .close-btn-bot ion-icon {
+            color: var(--Krem);
+            font-size: 25px;
+            font-weight: bold;
+            stroke-width: 30px;
+            --ionicon-stroke-width: 48px;
+        }
 
-/* Profile header styles */
-.container-profile {
-    display: flex;
-    align-items: center;
-    padding: 15px 15px;
-    background-color: var(--hijauTua);
-}
+        .close-btn-bot:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
-.profile-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 12px;
-    border: 2px solid #FFF5E1; /* Cream border added */
-    box-sizing: border-box; /* Ensures border doesn't affect image dimensions */
-}
+        /* Chat container styles */
+        .container-chat {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            scroll-behavior: smooth;
+        }
 
-.profile-text {
-    flex-grow: 1;
-}
-
-.profile-name {
-    color: var(--Krem);
-    font-weight: bold;
-    font-family: "acorn", sans-serif;
-    letter-spacing: 1px;
-    font-size: 16px;
-    margin-bottom: 2px;
-}
-
-.profile-desc {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--Krem);
-    font-family: 'Poppins', sans-serif;
-}
-
-
-
-
-
-/* Updated close button styles */
-.close-btn-bot{
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--Krem); /* Using your cream color variable */
-    padding: 5px;
-    border-radius: 20%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.close-btn-bot ion-icon {
-    color: var(--Krem);
-    font-size: 25px;
-    font-weight: bold;          
-    stroke-width: 30px;         
-    --ionicon-stroke-width: 48px; 
-  }
-  
-
-.close-btn-bot:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.container-chat {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* This ensures left alignment */
-}
-
-
-
-@keyframes fadeInUpBot {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-
+        .chat-messages {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
 .Bot-Answer {
     text-align: left;
     margin: 5px 0;
-    padding: 10px 15px;
+    padding: 12px 15px;
     color: var(--hijauBot);
     font-weight: 600;
     background-color: var(--PutihBot);
-    border-radius: 14px;
+    border-radius: 18px;
+    border-bottom-left-radius: 5px;
     max-width: 80%;
     display: inline-block;
     word-wrap: break-word;
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     align-self: flex-start;
-
-    animation: fadeInUpBot 0.4s ease-out;
-}
-
-.User-Answer {
-    text-align: left; /* Keep text left-aligned inside bubble */
-    margin: 5px 0;
-    padding: 10px 15px;
-    color: var(--Krem);
-    background-color: var(--hijauTua);
-    border-radius: 14px;
-    max-width: 80%;
-    display: none;
-    word-wrap: break-word;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    margin-left: auto; /* This pushes it to the right */
-    align-self: flex-end; /* For flex container alignment */
-
-    animation: fadeInUpBot 0.4s ease-out;
-}
-
-
-
-.Selection-user {
-    display: inline-block;
-    text-align: left;
-    margin: 5px 0;
-    padding: 15px 15px;
-    color: var(--hijauTua); /* Using your green color variable */
-    background-color: transparent;
-    border: 2px solid var(--hijauTua);
-    border-radius: 50px;
-    max-width: 100%;
-    width: auto;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    animation: bubbleIn 0.3s ease-out forwards;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    line-height: 1.6;
 
-    animation: fadeInUpBot 0.4s ease-out;
-    -webkit-tap-highlight-color: transparent;
+    /* Tambahan kunci agar format teks terlihat seperti di input */
+    white-space: pre-wrap;
 }
 
 
+        .User-Answer {
+            text-align: left;
+            margin: 5px 0;
+            padding: 12px 15px;
+            color: var(--Krem);
+            background-color: var(--hijauTua);
+            border-radius: 18px;
+            border-bottom-right-radius: 5px;
+            max-width: 80%;
+            display: inline-block;
+            word-wrap: break-word;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-left: auto;
+            align-self: flex-end;
+            animation: bubbleIn 0.3s ease-out forwards;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            line-height: 1.4;
+        }
 
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: var(--PutihBot);
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            max-width: 60px;
+            margin: 5px 0;
+            align-self: flex-start;
+        }
 
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--hijauBot);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingPulse 1.4s infinite ease-in-out;
+        }
 
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
 
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
 
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
-/* Responsive for mobile screens (≤ 767px) */
+        @keyframes typingPulse {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            30% {
+                transform: translateY(-5px);
+                opacity: 1;
+            }
+        }
 
+        .Selection-user {
+            display: inline-block;
+            text-align: left;
+            margin: 5px 0;
+            padding: 12px 15px;
+            color: var(--hijauTua);
+            background-color: transparent;
+            border: 2px solid var(--hijauTua);
+            border-radius: 50px;
+            max-width: 100%;
+            width: auto;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.4s ease-out;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-@media (max-width: 767px) {
+        .Selection-user:hover {
+            background-color: rgba(1, 89, 77, 0.1);
+        }
 
-  .no-scroll {
-    overflow: hidden;
-    height: 100vh;
-    position: fixed;
-    width: 100%;
+        .Selection-user:active {
+            transform: scale(0.98);
+        }
+
+        /* Input message area */
+        .input-message {
+            padding: 15px;
+            background-color: rgba(2, 114, 24, 0);
+            border-top: 2px solid var(--hijauBot);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 2px solid var(--hijauBot);
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+            background-color: var(--PutihBot);
+            color: var(--hijauBot);
+        }
+
+        .chat-input::placeholder {
+    color: var(--hijauBot); /* Sesuaikan dengan variabel warna kamu */
+    opacity: 0.6; /* Untuk efek lebih halus */
 }
-      
-    .open-Bot {
-        bottom: 20px;
-        right: 20px;
-        width: 35px;
-        height: 35px;
-      }
-      
-      .open-Bot:hover {
-        transform: scale(1.05);
-      }
-      
-      .open-Bot ion-icon {
-        font-size: 35px; /* Lebih besar dari container */
-        transform: scaleX(-1); /* Balik horizontal */
-        pointer-events: none; /* Biar klik tetap di container, bukan icon */
-      }
-      
+
+
+        .chat-input:focus {
+            border-color: var(--hijauTua);
+            box-shadow: 0 0 0 2px rgba(1, 89, 77, 0.2);
+        }
+
+        .send-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--hijauTua);
+            color: var(--Krem);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+                -webkit-tap-highlight-color: transparent;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .send-btn:active {
+            transform: scale(0.95);
+        }
+
+        .send-btn ion-icon {
+            font-size: 20px;
+        }
+
+        /* Scrollbar styling */
+        .container-chat::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .container-chat::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+
+        .container-chat::-webkit-scrollbar-thumb {
+            background-color: var(--hijauTua);
+            border-radius: 10px;
+        }
 
 
 
 
 
 
-      .container-Bot {
-        width: 100%;
-        height: 100vh;
-        height: -webkit-fill-available; /* For mobile browsers */
-        max-width: 100%;
-        min-width: 100%;
-        right: 0;
-        bottom: 0;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-        position: fixed;
-        overflow-y: auto;
-    }
 
-    .container-profile {
-        padding: 20px 20px;
-    }
 
-    .profile-img {
-        width: 50px;
-        height: 50px;
-    }
 
-    .profile-name {
-        font-size: 20px;
-    }
 
-    .profile-desc {
-        font-size: 14px;
-    }
 
-    .close-btn {
-        width: 45px;
-        height: 45px;
-    }
 
-    .close-btn ion-icon {
-        font-size: 28px;
-    }
 
-    .container-chat {
-        padding: 15px 20px;
-    }
 
-    .Bot-Answer,
-    .User-Answer,
-    .Selection-user {
-        max-width: 85%;
-        font-size: 14px;
-        padding: 12px 18px;
-    }
 
-    .Selection-user {
-        border-width: 2.5px;
-        padding: 16px 18px;
-    }
-}
+
+
+
+
+
+        /* Responsive for mobile screens (≤ 767px) */
+        @media (max-width: 767px) {
+
+            .no-scroll {
+              overflow: hidden;
+              height: 100vh;
+              position: fixed;
+              width: 100%;
+            }
+            
+            .open-Bot {
+                bottom: 20px;
+                right: 20px;
+                width: 35px;
+                height: 35px;
+              }
+            
+            .open-Bot:hover {
+              transform: scale(1.05);
+            }
+            
+            .open-Bot ion-icon {
+              font-size: 35px; /* Lebih besar dari container */
+              transform: scaleX(-1); /* Balik horizontal */
+              pointer-events: none; /* Biar klik tetap di container, bukan icon */
+            }
+
+            .container-Bot {
+                width: 100%;
+                height: 100vh;
+                height: -webkit-fill-available;
+                max-width: 100%;
+                min-width: 100%;
+                right: 0;
+                bottom: 0;
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+                position: fixed;
+            }
+
+            .container-profile {
+                padding: 20px 20px;
+            }
+
+            .profile-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .profile-name {
+                font-size: 20px;
+            }
+
+            .profile-desc {
+                font-size: 14px;
+            }
+
+            .close-btn-bot {
+                width: 45px;
+                height: 45px;
+            }
+
+            .close-btn-bot ion-icon {
+                font-size: 28px;
+            }
+
+            .container-chat {
+                padding: 15px 20px;
+            }
+
+            .Bot-Answer,
+            .User-Answer,
+            .Selection-user {
+                max-width: 85%;
+                font-size: 14px;
+                padding: 12px 18px;
+            }
+
+            .Selection-user {
+                border-width: 2.5px;
+                padding: 16px 18px;
+            }
+        }
