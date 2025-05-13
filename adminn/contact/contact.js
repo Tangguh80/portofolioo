@@ -10,26 +10,77 @@ function handleBodyScrollLock(lock) {
   }
 }
 
-openBotBtn.addEventListener('click', () => {
+// Function to update URL with chat parameter
+function updateUrlWithChatParam(shouldAdd) {
+  const currentUrl = new URL(window.location.href);
+  const searchParams = new URLSearchParams(currentUrl.search);
+  
+  if (shouldAdd) {
+    searchParams.set('chat', 'open');
+  } else {
+    searchParams.delete('chat');
+  }
+  
+  // Build new URL with all parameters
+  let newUrl = window.location.pathname;
+  if (Array.from(searchParams).length > 0) {
+    newUrl += '?' + searchParams.toString();
+  }
+  
+  // Use replaceState instead of pushState to prevent adding to history
+  history.replaceState({ chat: shouldAdd ? 'open' : null }, '', newUrl);
+}
+
+// Check if chat should be open on page load
+function checkInitialChatState() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('chat') === 'open') {
+    openBot();
+  } else if (containerBot.classList.contains('show')) {
+    // If bot is shown but no chat parameter, add it
+    updateUrlWithChatParam(true);
+  }
+}
+
+function openBot() {
   containerBot.classList.remove('hide');
   containerBot.classList.add('show');
   containerBot.style.display = 'flex';
   openBotBtn.style.display = 'none';
-  handleBodyScrollLock(true); // Lock scroll
-});
+  handleBodyScrollLock(true);
+  updateUrlWithChatParam(true);
+}
 
-closeBotBtn.addEventListener('click', () => {
+function closeBot() {
   containerBot.classList.remove('show');
   containerBot.classList.add('hide');
 
   setTimeout(() => {
     containerBot.style.display = 'none';
     openBotBtn.style.display = 'flex';
-    handleBodyScrollLock(false); // Unlock scroll
+    handleBodyScrollLock(false);
+    updateUrlWithChatParam(false);
   }, 400);
+}
+
+openBotBtn.addEventListener('click', openBot);
+closeBotBtn.addEventListener('click', closeBot);
+
+// Handle popstate events
+window.addEventListener('popstate', function(event) {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('chat') === 'open') {
+    if (!containerBot.classList.contains('show')) {
+      openBot();
+    }
+  } else {
+    if (containerBot.classList.contains('show')) {
+      closeBot();
+    }
+  }
 });
 
-// Scroll behavior
+// Scroll behavior (tetap sama)
 window.addEventListener('scroll', () => {
   if (containerBot.classList.contains('show')) {
     openBotBtn.style.display = 'none';
@@ -54,7 +105,7 @@ window.addEventListener('scroll', () => {
   }, 200);
 });
 
-// Jika ukuran layar berubah saat bot aktif, cek ulang scroll lock
+// Resize handler (tetap sama)
 window.addEventListener('resize', () => {
   if (containerBot.classList.contains('show')) {
     handleBodyScrollLock(true);
@@ -62,6 +113,10 @@ window.addEventListener('resize', () => {
     handleBodyScrollLock(false);
   }
 });
+
+// Initialize chat state on page load
+document.addEventListener('DOMContentLoaded', checkInitialChatState);
+
 
 
 
