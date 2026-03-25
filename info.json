@@ -1,139 +1,206 @@
 {
-  "personal_information": {
-    "name": "TANGGUH SARWONO",
-    "address": "Jl. Ketapang No 100, RT05 RW07, Kecamatan Cilacap Utara, Kelurahan Kebonmanis, Kabupaten Cilacap",
-    "phone": "+62858-0249-4720",
-    "email": "Tangguh880@gmail.com",
-    "website": "https://tangguh80.github.io/Portofolio"
+  "profil": {
+    "nama": "Tangguh Sarwono",
+    "profesi": "Electrical Engineer",
+    "deskripsi": "Mahasiswa Teknik Listrik di Politeknik Negeri Cilacap. Berfokus pada sistem otomasi, desain kelistrikan, dan teknologi kontrol industri untuk menciptakan solusi yang efisien dan andal.",
+    "keahlian_umum": "Pengalaman dalam instalasi tenaga listrik, sistem kontrol berbasis PLC, manajemen distribusi daya, analisis dan inspeksi kelayakan bangunan untuk Sertifikat Laik Fungsi (SLF), serta pemahaman mendalam tentang sistem pendingin dan instalasi listrik industri.",
+    "foto": "https://i.pinimg.com/736x/82/e7/4e/82e74e577e47b0d0f2757b73f9b436f1.jpg",
+    "sosial_media": {
+      "linkedin": "https://www.linkedin.com/in/tangguh-sarwono",
+      "github": "https://github.com/Tangguh80",
+      "instagram": "https://www.instagram.com/tangguh_s_80"
+    },
+    "website": "https://tangguh80.github.io/portofolioo/adminn/admin.html",
+    "last_updated": "23 Maret 2026 pukul 10:13"
   },
-  "about": "Fresh Graduate di bidang Teknik Listrik dengan keahlian dalam instalasi tenaga listrik, sistem kontrol berbasis PLC, dan manajemen distribusi daya. Berpengalaman dalam analisis dan inspeksi kelayakan bangunan untuk Sertifikat Laik Fungsi (SLF) serta memiliki pemahaman mendalam tentang sistem pendingin dan instalasi listrik industri.",
-  "work_experience": [
+  "riwayat_pendidikan": [
     {
-      "company": "PT Panasonic Manufacturing Indonesia (Pembuatan AC)",
-      "period": "Februari - Mei 2022",
-      "responsibilities": [
-        "Mengoperasikan oven dan mesin press untuk proses pembuatan evaporator AC",
-        "Pemasangan Kompresor pada Outdoor AC",
-        "Melaksanakan pengecekan, pencatatan, dan pengemasan (O/I Book & Packing) unit outdoor AC",
-        "Mengkoordinasikan distribusi komponen produksi AC ke lini produksi"
+      "institusi": "TK Kencana",
+      "tahun": "2009 - 2011",
+      "kurikulum": "Kurikulum 2006",
+      "keterangan": [
+        "Melatih kemampuan berpikir logis lewat pengenalan angka, bentuk, warna, pola, dan kegiatan eksplorasi.",
+        "Dikenalkan pada cara berbicara, mendengarkan, bercerita, serta dasar-dasar membaca dan menulis.",
+        "Penanaman nilai-nilai seperti sopan santun, kejujuran, serta kebiasaan hidup mandiri seperti makan sendiri dan menjaga kebersihan."
       ]
     },
     {
-      "company": "PT Panasonic Gobel Dharma Nusantara",
-      "period": "Juni - Agustus 2022",
-      "responsibilities": [
-        "Melakukan Pemasangan AC pada Rumah Konsumen",
-        "Mengganti led TV Konsumen yang rusak",
-        "Memperbaiki Dispenser konsumen yang mengalami kerusakan",
-        "Mengisi Freon AC konsumen yang mengalami kerusakan",
-        "Melakukan cuci AC konsumen yang kotor"
+      "institusi": "SDN Karangtalun 03",
+      "tahun": "2011 - 2017",
+      "kurikulum": "Kurikulum 2006",
+      "keterangan": [
+        "Penguatan Kemampuan Dasar (Membaca, Menulis, Berhitung)",
+        "Pembelajaran Akademik Berbasis Mata Pelajaran: Bahasa Indonesia, Matematika, IPA, IPS, Pendidikan Agama, PPKn, Seni Budaya dan Prakarya, PJOK",
+        "Pengembangan Karakter dan Nilai"
+      ]
+    },
+    {
+      "institusi": "SMPN 08 Cilacap",
+      "tahun": "2017 - 2020",
+      "kurikulum": "Kurikulum 2013",
+      "keterangan": [
+        "Matematika (aljabar, geometri, statistik)",
+        "Bahasa Indonesia (analisis teks, menulis esai, puisi)",
+        "Bahasa Inggris (grammar, reading comprehension, speaking)",
+        "IPA (fisika, biologi, kimia dasar)",
+        "IPS (sejarah, geografi, ekonomi, sosiologi)",
+        "Pendidikan Agama",
+        "PPKn",
+        "Seni Budaya",
+        "Informatika / TIK",
+        "PJOK",
+        "Pengembangan Diri dan Karakter"
+      ]
+    },
+    {
+      "institusi": "SMKN Nusawungu",
+      "tahun": "2020 - 2023",
+      "jurusan": "Teknik Instalasi Tenaga Listrik",
+      "keterangan": [
+        "Mendesain dan memasang instalasi listrik di rumah.",
+        "Mempelajari jaringan distribusi listrik tegangan rendah dan menengah.",
+        "Mengoperasikan dan merancang sistem kontrol menggunakan PLC.",
+        "Kelas Pelatihan Sistem Pendingin & AC - PT Panasonic: Mengenal regulasi dan standar industri dalam bidang pendingin, Prosedur pemasangan unit AC split, window, dan inverter, Teknik penyambungan pipa refrigeran dan pengecekan kebocoran, Pengisian dan pemulihan refrigeran sesuai standar keselamatan."
+      ]
+    },
+    {
+      "institusi": "Politeknik Negeri Cilacap",
+      "tahun": "2023 - 2026",
+      "jenjang": "D3 Teknik Listrik",
+      "keterangan": [
+        "Dasar-dasar matematika yang diterapkan dalam teknik listrik.",
+        "Mempelajari jaringan distribusi listrik tegangan rendah dan menengah.",
+        "Penggunaan elektronika dalam pengendalian daya listrik.",
+        "Pemrograman dan Perancangan panel control basis Programmable Logic Controller.",
+        "Prinsip kerja dan jenis-jenis mesin listrik.",
+        "Penerapan K3 dalam industri.",
+        "Media Organizer - UKM Logic Robotic: Membuat konten menarik (foto, video, artikel), dokumentasi acara dan perlombaan Robotic, desain grafis poster, brosur, dan materi promosi.",
+        "Project Dosen - Konsultan Pembuatan Laporan SLF Bangunan: Pengumpulan data teknis, inspeksi instalasi listrik, peninjauan sistem keselamatan, penggunaan alat ukur, Drawing ulang Electrical dengan AutoCAD, pembuatan Laporan SLF."
       ]
     }
   ],
-  "education": [
+  "keahlian_teknis": [
     {
-      "institution": "SMKN NUSAWUNGU",
-      "period": "2020 - 2023",
-      "major": "Teknik Instalasi Tenaga Listrik",
-      "achievements": [
-        "Mendesain dan memasang instalasi listrik di rumah",
-        "Mempelajari jaringan distribusi listrik tegangan rendah dan menengah",
-        "Mengoperasikan dan merancang sistem kontrol menggunakan PLC"
-      ]
+      "nama": "CX - Programmer",
+      "deskripsi": "Membuat ladder diagram (LD), mengedit, dan memonitor program PLC.",
+      "gambar": "https://raw.githubusercontent.com/Tangguh80/portofolioo/main/adminn/image/cx.png"
     },
     {
-      "institution": "Kelas Pelatihan Sistem Pendingin & AC – PT Panasonic",
-      "achievements": [
-        "Mengenal regulasi dan standar industri dalam bidang pendingin",
-        "Prosedur pemasangan unit AC split, window, dan inverter",
-        "Teknik penyambungan pipa refrigeran dan pengecekan kebocoran",
-        "Pengisian dan pemulihan refrigeran sesuai standar keselamatan"
-      ]
+      "nama": "HMI",
+      "deskripsi": "Menghubungkan manusia (operator) dengan mesin atau sistem otomasi, seperti PLC.",
+      "gambar": "https://raw.githubusercontent.com/Tangguh80/portofolioo/main/adminn/image/HMI.png"
     },
     {
-      "institution": "POLITEKNIK NEGERI CILACAP",
-      "period": "2023 - Sekarang",
-      "major": "D3 - Teknik Listrik",
-      "achievements": [
-        "Dasar-dasar matematika yang diterapkan dalam teknik listrik",
-        "Mempelajari jaringan distribusi listrik tegangan rendah dan menengah",
-        "Penggunaan elektronika dalam pengendalian daya listrik",
-        "Pemrograman dan Perancangan panel control basis Programmable Logic Controller",
-        "Prinsip kerja dan jenis-jenis mesin listrik",
-        "Penerapan K3 dalam industri"
-      ]
+      "nama": "ETAP",
+      "deskripsi": "Analisis, simulasi, desain, dan pengelolaan sistem distribusi dan transmisi listrik di industri dan pembangkit.",
+      "gambar": "https://raw.githubusercontent.com/Tangguh80/portofolioo/main/adminn/image/Etap.png"
+    },
+    {
+      "nama": "AutoCAD",
+      "deskripsi": "Membuat MEP, diagram kontrol, wiring diagram, ladder diagram, dan panel layout.",
+      "gambar": "https://raw.githubusercontent.com/Tangguh80/portofolioo/main/adminn/image/AutoCAD.png"
+    },
+    {
+      "nama": "PVsyst",
+      "deskripsi": "Merancang, mengevaluasi, dan mengoptimalkan sistem pembangkit listrik tenaga surya (PLTS).",
+      "gambar": "https://raw.githubusercontent.com/Tangguh80/portofolioo/main/adminn/image/PVSYST.png"
+    },
+    {
+      "nama": "Proteus 8 Demonstran",
+      "deskripsi": "Membuat rangkaian elektronik dan desain layout PCB.",
+      "gambar": "https://raw.githubusercontent.com/Tangguh80/portofolioo/main/adminn/image/logo%20proteus.png"
+    },
+    {
+      "nama": "Eagle",
+      "deskripsi": "Membuat rangkaian elektronik dan desain layout PCB.",
+      "gambar": "https://raw.githubusercontent.com/Tangguh80/portofolioo/main/adminn/image/eagle.png"
     }
   ],
-  "projects": [
+  "sertifikat": [
     {
-      "role": "Media Organizer - UKM Logic Robotic",
-      "responsibilities": [
-        "Membuat konten menarik (foto, video, artikel) untuk meningkatkan visibilitas UKM",
-        "Mengambil foto/video selama acara robotic untuk laporan dan media sosial",
-        "Desain grafis untuk poster, brosur, dan materi promosi"
-      ]
+      "nama": "Basic Training PLC",
+      "deskripsi": "Pelatihan Dasar Tentang PLC, Diagram, Pengoperasian",
+      "tahun": "2024",
+      "penerbit": "Realteach"
     },
     {
-      "role": "Konsultan Pembuatan Laporan SLF bangunan",
-      "responsibilities": [
-        "Mengumpulkan data spesifikasi teknis bangunan",
-        "Memeriksa instalasi listrik, panel, grounding, dan proteksi listrik",
-        "Meninjau sistem hydrant, alarm kebakaran, dan jalur evakuasi",
-        "Menggunakan alat ukur untuk parameter keamanan (tegangan listrik, lux cahaya)",
-        "Inspeksi struktur, kelistrikan, sanitasi, dan sistem keselamatan",
-        "Membuat gambar teknis dengan AutoCAD berdasarkan pemeriksaan",
-        "Pembuatan Laporan SLF untuk dinas terkait"
-      ]
-    }
-  ],
-  "trainings": [
-    {
-      "program": "Junior Web Developer - VSGA Kominfo",
-      "period": "Juli - Agustus 2023",
-      "skills": [
-        "HTML, CSS, JavaScript dasar",
-        "Pembuatan website berbasis PHP untuk penyimpanan data",
-        "Hosting menggunakan cPanel, Netlify, Vercel, Firebase",
-        "Desain website berbasis Bootstrap",
-        "Implementasi AJAX dan Fetch API",
-        "Membuat dan mengelola CRUD database"
-      ]
+      "nama": "Junior Web Developer",
+      "deskripsi": "Pelatihan tentang pembuatan web, PHP, Bootstrap",
+      "tahun": "2023",
+      "penerbit": "Kominfo"
     },
     {
-      "program": "Microsoft AI Beginner - FGA Komdigi",
-      "period": "Maret - April 2025",
-      "skills": [
-        "Layanan AI Microsoft Azure (machine learning, computer vision, NLP)",
-        "Pengenalan cloud computing dan penerapan industri",
-        "Manajemen Azure dan alat pengelolaan layanan"
-      ]
-    }
-  ],
-  "technical_skills": {
-    "electrical": [
-      "Instalasi Listrik rumah dan industri",
-      "Sistem Kontrol Berbasis PLC",
-      "Manajemen Distribusi Daya",
-      "Pemeliharaan dan Perbaikan Sistem Listrik",
-      "Inspeksi Kelayakan Bangunan (SLF)",
-      "Keselamatan dan Standar Kelistrikan (PUIL)",
-      "K3"
-    ],
-    "other": [
-      "Sistem Pendingin",
-      "CAD",
-      "Autocad"
-    ]
-  },
-  "languages": [
-    {
-      "language": "Bahasa Indonesia",
-      "proficiency": "Native"
+      "nama": "Microsoft: Azure AI Fundamentals",
+      "deskripsi": "Fundamentals of Computer Vision",
+      "tahun": "2025",
+      "penerbit": "Microsoft"
     },
     {
-      "language": "English",
-      "proficiency": "Basic/Intermediate"
+      "nama": "Microsoft: Designing and Implementing a Microsoft Azure AI Solution",
+      "deskripsi": "Designing and Implementing",
+      "tahun": "2025",
+      "penerbit": "Microsoft"
+    },
+    {
+      "nama": "Rekayasa Prompt dengan Azure OpenAI Service",
+      "deskripsi": "Pelatihan rekayasa prompt dengan Azure",
+      "tahun": "2025",
+      "penerbit": "DigiTalent"
+    },
+    {
+      "nama": "Menskalakan AI di Organisasi",
+      "deskripsi": "Pelatihan Penerapan AI pada Organisasi",
+      "tahun": "2025",
+      "penerbit": "DigiTalent"
+    },
+    {
+      "nama": "Dasar-Dasar Keamanan AI",
+      "deskripsi": "Pelatihan Dasar-dasar keamanan AI",
+      "tahun": "2025",
+      "penerbit": "DigiTalent"
+    },
+    {
+      "nama": "AI Beginner",
+      "deskripsi": "Pelatihan AI Generatif, Arsitektur dan Layanan Azure",
+      "tahun": "2025",
+      "penerbit": "DigiTalent"
+    },
+    {
+      "nama": "AI Intermediate: AI Track",
+      "deskripsi": "Pelatihan Proyek Terpandu - Men-deploy Aplikasi ke Azure Kubernetes Service",
+      "tahun": "2025",
+      "penerbit": "DigiTalent"
+    },
+    {
+      "nama": "AI Advanced: AI Track",
+      "deskripsi": "Mengembangkan pemrosesan Bahasa Alami dengan Azure AI Services",
+      "tahun": "2025",
+      "penerbit": "DigiTalent"
     }
   ],
-  "certification": "Semua data yang tertera dalam biodata ini adalah benar dan dapat dipertanggungjawabkan secara hukum. Cilacap, 9 Maret 2025"
+  "pengalaman_kerja": [
+    {
+      "jenis": "Praktek Kerja Lapangan",
+      "perusahaan": "PT Panasonic Gobel Dharma Nusantara"
+    },
+    {
+      "jenis": "Praktek Kerja Lapangan",
+      "perusahaan": "PT Panasonic Manufacturing Indonesia"
+    },
+    {
+      "jenis": "Magang Industri",
+      "perusahaan": "PT Indoceria Plastik & Printing"
+    }
+  ],
+  "proyek": [
+    {
+      "jenis": "Tugas Akhir",
+      "nama": "Pembuatan Mesin"
+    },
+    {
+      "jenis": "Project Dosen",
+      "nama": "Konsultan Pembuatan Laporan SLF Bangunan",
+      "deskripsi": "Mengumpulkan data spesifikasi teknis bangunan, inspeksi instalasi listrik, peninjauan sistem keselamatan, penggunaan alat ukur, Drawing ulang Electrical dengan AutoCAD, dan Pembuatan Laporan SLF untuk diajukan ke dinas terkait."
+    }
+  ]
 }
