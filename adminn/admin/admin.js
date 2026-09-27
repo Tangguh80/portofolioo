@@ -241,9 +241,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
-
 /*====================================== Night Mode ====================================*/
 document.addEventListener('DOMContentLoaded', function() {
     const navItems = document.querySelectorAll('nav ul li');
@@ -528,3 +525,123 @@ window.addEventListener('beforeinstallprompt', (e) => {
   
 
 });
+
+
+
+
+
+/*====================================== ontainer Overlay ====================================*/
+(function () {
+    var OVERLAY_SELECTOR = '.overlay-backdrop';
+    var overlayEl = null;
+    var lastFocusedEl = null;
+
+    function initOverlay(selector) {
+        overlayEl = document.querySelector(selector || OVERLAY_SELECTOR);
+        if (!overlayEl) return;
+
+        // Pindahkan ke child paling akhir <body>. Ini penting: kalau
+        // overlay awalnya ada di dalam section/wrapper yang punya
+        // transform, filter, atau perspective, position:fixed jadi
+        // dihitung relatif ke wrapper itu (bukan ke viewport) sehingga
+        // blur tidak menutupi seluruh layar. appendChild ke body
+        // menjamin overlay selalu relatif ke viewport & di lapisan
+        // paling depan (dibantu z-index maksimum di CSS).
+        document.body.appendChild(overlayEl);
+
+        overlayEl.addEventListener('click', function (e) {
+            if (e.target === overlayEl) closeOverlay();
+        });
+
+        var closeBtn = overlayEl.querySelector('.close-btn');
+        if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && overlayEl.classList.contains('is-open')) {
+                closeOverlay();
+            }
+        });
+    }
+
+    function openOverlay() {
+        if (!overlayEl) return;
+        lastFocusedEl = document.activeElement;
+        overlayEl.classList.add('is-open');
+        document.body.classList.add('overlay-lock');
+        var closeBtn = overlayEl.querySelector('.close-btn');
+        if (closeBtn) closeBtn.focus();
+    }
+
+    function closeOverlay() {
+        if (!overlayEl) return;
+        overlayEl.classList.remove('is-open');
+        document.body.classList.remove('overlay-lock');
+
+        var iframeTarget = overlayEl.querySelector('.overlay-iframe');
+        if (iframeTarget) iframeTarget.src = 'about:blank';
+
+        if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
+            lastFocusedEl.focus();
+        }
+    }
+
+    // Dipanggil dari tombol "Buka"/"Work" yang sudah ada di halaman,
+    // contoh: <button onclick="openOverlay()">Buka</button>
+    function fillOverlay(data) {
+        if (!overlayEl) return;
+
+        var titleTarget = overlayEl.querySelector('.company-title');
+        if (titleTarget) titleTarget.textContent = data.title || '';
+
+        var photoTarget = overlayEl.querySelector('.company-photo');
+        if (photoTarget) {
+            photoTarget.setAttribute('src', data.photoSrc || '');
+            photoTarget.setAttribute('alt', data.photoAlt || data.title || '');
+        }
+
+        var contentTarget = overlayEl.querySelector('.overlay-content');
+        if (contentTarget) {
+            var iframeTarget = contentTarget.querySelector('.overlay-iframe');
+            if (!iframeTarget) {
+                iframeTarget = document.createElement('iframe');
+                iframeTarget.className = 'overlay-iframe';
+                iframeTarget.setAttribute('loading', 'lazy');
+                contentTarget.appendChild(iframeTarget);
+            }
+            iframeTarget.setAttribute('title', data.title || 'Detail konten');
+            // src baru diisi hanya kalau beda, biar tidak reload sia-sia
+            if (iframeTarget.getAttribute('src') !== data.url) {
+                iframeTarget.src = data.url || '';
+            }
+        }
+    }
+
+    function bindTriggers() {
+        // Menjaring semua tombol dengan class diawali "big-btn"
+        // (big-btn, big-btn2, big-btn3, dst.) tanpa perlu didaftar manual.
+        var triggers = document.querySelectorAll('[class*="big-btn"]');
+        triggers.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var titleEl = btn.querySelector('[class*="btn-title"]');
+                var imgEl = btn.querySelector('img');
+
+                fillOverlay({
+                    title: titleEl ? titleEl.textContent.trim() : '',
+                    photoSrc: imgEl ? imgEl.getAttribute('src') : '',
+                    photoAlt: imgEl ? imgEl.getAttribute('alt') : '',
+                    url: btn.getAttribute('data-url') || ''
+                });
+                openOverlay();
+            });
+        });
+    }
+
+    window.initOverlay = initOverlay;
+    window.openOverlay = openOverlay;
+    window.closeOverlay = closeOverlay;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        initOverlay();
+        bindTriggers();
+    });
+})();
