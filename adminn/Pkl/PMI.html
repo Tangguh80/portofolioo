@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tangguh – PT.PMI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="GDN.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wadah">
+      <p class="hero__label">Praktik Kerja Lapangan</p>
+      <h1 class="hero__judul">PT. Panasonic Manufacturing Indonesia</h1>
+
+      <svg class="hero__kabel" viewBox="0 0 420 28" aria-hidden="true">
+        <path d="M2 14 H120 L140 4 L170 24 L190 14 H400" />
+        <circle cx="408" cy="14" r="7" />
+      </svg>
+
+      <p class="hero__ket">
+        PKL di lini produksi PT Panasonic Manufacturing Indonesia: mengoperasikan
+        mesin untuk evaporator AC, memasang kompresor outdoor, dan memastikan unit
+        siap kirim.
+      </p>
+
+      <ul class="hero__info">
+        <li>PT Panasonic Manufacturing Indonesia</li>
+        <li>Februari – April 2022</li>
+        <li>Jakarta Timur</li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wadah">
+    <div class="daftar" id="daftar">
+
+      <!-- 1. Ringkasan -->
+      <section class="butir buka">
+        <h2 style="margin:0">
+          <button class="butir__tombol" aria-expanded="true" aria-controls="p1" id="t1">
+            Ringkasan PKL
+            <span class="butir__panah"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l5 5 5-5"/></svg></span>
+          </button>
+        </h2>
+        <div class="butir__isi" id="p1" role="region" aria-labelledby="t1">
+          <div class="butir__dalam">
+            <dl class="data">
+              <dt>Posisi</dt><dd>Magang, produksi AC</dd>
+              <dt>Perusahaan</dt><dd>PT Panasonic Manufacturing Indonesia</dd>
+              <dt>Periode</dt><dd>Februari 2022 – April 2022 (3 bulan)</dd>
+              <dt>Lokasi</dt><dd>Jl. Raya Bogor KM 29, Gandaria, Pekayon, Jakarta Timur 13710</dd>
+              <dt>Sistem kerja</dt><dd>Di lokasi</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Kegiatan -->
+      <section class="butir">
+        <h2 style="margin:0">
+          <button class="butir__tombol" aria-expanded="false" aria-controls="p2" id="t2">
+            Kegiatan selama PKL
+            <span class="butir__panah"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l5 5 5-5"/></svg></span>
+          </button>
+        </h2>
+        <div class="butir__isi" id="p2" role="region" aria-labelledby="t2">
+          <div class="butir__dalam">
+            <ul class="kegiatan">
+              <li style="--i:0">Mengoperasikan oven dan mesin press untuk proses pembuatan evaporator AC.</li>
+              <li style="--i:1">Memasang kompresor pada outdoor AC.</li>
+              <li style="--i:2">Melakukan pengecekan, pencatatan, dan pengemasan (O/I Book &amp; Packing) unit outdoor AC ke dalam karton.</li>
+              <li style="--i:3">Mengoordinasikan distribusi komponen produksi AC ke lini produksi.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Dokumentasi -->
+      <section class="butir">
+        <h2 style="margin:0">
+          <button class="butir__tombol" aria-expanded="false" aria-controls="p3" id="t3">
+            Dokumentasi foto
+            <span class="butir__panah"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l5 5 5-5"/></svg></span>
+          </button>
+        </h2>
+        <div class="butir__isi" id="p3" role="region" aria-labelledby="t3">
+          <div class="butir__dalam">
+            <div class="galeri">
+
+              <figure class="bingkai" style="--i:0">
+                <div class="bingkai__foto">
+                  <img src="https://i.pinimg.com/736x/e3/ae/e2/e3aee26e67ed832cb6c6fa8830abf610.jpg" alt="Area PT Panasonic Manufacturing Indonesia" loading="lazy" />
+                </div>
+                <figcaption>
+                  <strong>Area PKL</strong>
+                  PT Panasonic Manufacturing Indonesia.
+                </figcaption>
+              </figure>
+
+              <figure class="bingkai" style="--i:1">
+                <div class="bingkai__foto">
+                  <img src="https://i.pinimg.com/736x/22/73/27/227327c3062b589561e071aeb36b80aa.jpg" alt="Mesin di lini produksi" loading="lazy" />
+                </div>
+                <figcaption>
+                  <strong>Lini produksi</strong>
+                  PT Panasonic Manufacturing Indonesia.
+                </figcaption>
+              </figure>
+
+              <figure class="bingkai" style="--i:2">
+                <div class="bingkai__foto">
+                  <img src="https://i.pinimg.com/736x/f6/3d/df/f63ddfb5fe1abd0e0c0c8fe35d65c98e.jpg" alt="Lingkungan pabrik" loading="lazy" />
+                </div>
+                <figcaption>
+                  <strong>Lingkungan pabrik</strong>
+                  PT Panasonic Manufacturing Indonesia.
+                </figcaption>
+              </figure>
+
+              <figure class="bingkai" style="--i:3">
+                <div class="bingkai__foto">
+                  <img src="https://i.pinimg.com/736x/ce/18/02/ce18026f0337d1518c98df063a7c5ecd.jpg" alt="Dokumentasi kegiatan PKL" loading="lazy" />
+                </div>
+                <figcaption>
+                  <strong>Dokumentasi kegiatan</strong>
+                  PT Panasonic Manufacturing Indonesia.
+                </figcaption>
+              </figure>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Keahlian -->
+      <section class="butir">
+        <h2 style="margin:0">
+          <button class="butir__tombol" aria-expanded="false" aria-controls="p4" id="t4">
+            Keahlian yang diasah
+            <span class="butir__panah"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l5 5 5-5"/></svg></span>
+          </button>
+        </h2>
+        <div class="butir__isi" id="p4" role="region" aria-labelledby="t4">
+          <div class="butir__dalam">
+            <ul class="keahlian">
+              <li style="--i:0">Manufacturing</li>
+              <li style="--i:1">Manufacturing Operations Management</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="kaki">
+    <div class="wadah">
+      Portofolio PKL · Tangguh Sarwono · D3 Teknik Listrik, Politeknik Negeri Cilacap<br />
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var daftar = document.getElementById("daftar");
+      var butir = daftar.querySelectorAll(".butir");
+
+      // Dropdown: klik untuk buka/tutup. Hanya satu bagian terbuka pada satu waktu.
+      function atur(item, buka) {
+        item.classList.toggle("buka", buka);
+        item.querySelector(".butir__tombol").setAttribute("aria-expanded", String(buka));
+      }
+
+      daftar.addEventListener("click", function (e) {
+        var tombol = e.target.closest(".butir__tombol");
+        if (!tombol) return;
+        var item = tombol.closest(".butir");
+        var sedangBuka = item.classList.contains("buka");
+
+        butir.forEach(function (b) { atur(b, false); });
+        atur(item, !sedangBuka);
+
+        if (!sedangBuka) {
+          setTimeout(function () {
+            item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }, 250);
+        }
+      });
+
+      // Jika foto belum ditaruh di folder images/, tampilkan bingkai kosong yang rapi.
+      document.querySelectorAll(".bingkai__foto img").forEach(function (img) {
+        img.addEventListener("error", function () {
+          var wadah = img.parentElement;
+          wadah.classList.add("kosong");
+          wadah.textContent = "Taruh foto di " + img.getAttribute("src");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
