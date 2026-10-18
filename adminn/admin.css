@@ -376,22 +376,48 @@ nav ul li a ion-icon {
 
 /*====================================== Overlay container ====================================*/
 
-/* container overlay Utama — {Backround blur putih transparant} */
+/*====================================== Overlay container ====================================*/
+
+/* Backdrop: tidak lagi memakai display:none supaya bisa di-transition
+   (buka & tutup sama-sama halus). Class .is-open tetap dipakai seperti sebelumnya,
+   jadi JavaScript tidak perlu diubah. */
 .overlay-backdrop {
     position: fixed;
-    inset: 0; /* top/right/bottom/left: 0 — pas dgn viewport asli, beda dgn 100vw yg ikut menghitung lebar scrollbar */
-    display: none;
+    inset: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    z-index: 2147483647; /* nilai z-index maksimum, jamin selalu di lapisan paling depan */
+    z-index: 2147483647;
+
+    /* keadaan tertutup */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition:
+        opacity 0.3s ease,
+        background 0.3s ease,
+        backdrop-filter 0.3s ease,
+        -webkit-backdrop-filter 0.3s ease,
+        visibility 0s linear 0.3s; /* sembunyikan setelah animasi tutup selesai */
 }
 
 .overlay-backdrop.is-open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition:
+        opacity 0.4s ease,
+        background 0.4s ease,
+        backdrop-filter 0.4s ease,
+        -webkit-backdrop-filter 0.4s ease,
+        visibility 0s;
 }
 
 .overlay-container {
@@ -404,6 +430,24 @@ nav ul li a ion-icon {
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+    will-change: transform, opacity;
+
+    /* keadaan tertutup (juga dipakai saat animasi tutup: cepat & halus) */
+    opacity: 0;
+    transform: translateY(32px) scale(0.95);
+    transition:
+        transform 0.3s cubic-bezier(0.4, 0, 1, 1),
+        opacity 0.2s ease;
+}
+
+.overlay-backdrop.is-open .overlay-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    /* easing "melambat di akhir" + sedikit lembut, terasa natural */
+    transition:
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.35s ease;
+    transition-delay: 0.05s;
 }
 
 /* container navigasi overlay */
@@ -449,11 +493,12 @@ nav ul li a ion-icon {
     justify-content: center;
     cursor: pointer;
     font-size: 18px;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, transform 0.25s ease;
 }
 
 .close-btn:hover {
     background: rgba(255, 255, 255, 0.15);
+    transform: rotate(90deg);
 }
 
 .close-btn:focus-visible {
@@ -481,6 +526,48 @@ nav ul li a ion-icon {
     display: block;
 }
 
+/*====================================== Animasi isi (stagger) ====================================*/
+/* fill-mode "backwards": elemen mulai dari keyframe awal, lalu kembali ke gaya normal
+   (sehingga efek hover tombol tutup tetap jalan). */
+
+.overlay-backdrop.is-open .company-photo {
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+}
+
+.overlay-backdrop.is-open .company-title {
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.26s backwards;
+}
+
+.overlay-backdrop.is-open .close-btn {
+    animation: popRotate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.32s backwards;
+}
+
+.overlay-backdrop.is-open .overlay-content {
+    animation: fadeIn 0.5s ease 0.3s backwards;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popRotate {
+    from { opacity: 0; transform: scale(0.5) rotate(-90deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/*====================================== Responsive ====================================*/
+
 @media (max-width: 520px) {
     .overlay-backdrop {
         padding: 0 12px;
@@ -489,6 +576,7 @@ nav ul li a ion-icon {
     .overlay-container {
         max-height: 88vh;
         border-radius: 14px;
+        transform: translateY(48px) scale(0.97); /* di HP: naik dari bawah, lebih natural */
     }
     .overlay-nav {
         padding: 14px 16px;
@@ -507,10 +595,28 @@ nav ul li a ion-icon {
     }
 }
 
-/* dipasang/dilepas lewat JS saat overlay dibuka/ditutup, bukan mengubah rule body yang sudah ada */
+/* Hormati pengguna yang mematikan animasi di perangkatnya */
+@media (prefers-reduced-motion: reduce) {
+    .overlay-backdrop,
+    .overlay-container {
+        transition: opacity 0.15s linear, visibility 0s linear 0.15s;
+        transform: none !important;
+    }
+    .overlay-backdrop.is-open .overlay-container {
+        transition: opacity 0.15s linear;
+    }
+    .overlay-backdrop.is-open .company-photo,
+    .overlay-backdrop.is-open .company-title,
+    .overlay-backdrop.is-open .close-btn,
+    .overlay-backdrop.is-open .overlay-content {
+        animation: none;
+    }
+}
+
 body.overlay-lock {
     overflow: hidden;
 }
+
 /*====================================== isi====================================*/
 
 .container-isi {
@@ -523,7 +629,7 @@ body.overlay-lock {
     justify-content: center;
     background-color: rgba(255, 0, 0, 0);
     align-items: center;
-    margin-top: 80px;
+    margin-top: 0px;
     margin-bottom: 150px;
 
     /* Animasi */
@@ -699,6 +805,7 @@ body.overlay-lock {
     gap: 0px;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
     margin-bottom: 150px;
 
     /* Animasi */
@@ -1876,28 +1983,7 @@ body.overlay-lock {
 
 
 
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
