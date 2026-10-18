@@ -533,8 +533,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
 /*====================================== ontainer Overlay ====================================*/
 (function () {
     var OVERLAY_SELECTOR = '.overlay-backdrop';
+    var CLOSE_DURATION = 300; // ms, samakan dengan durasi animasi tutup di CSS
     var overlayEl = null;
     var lastFocusedEl = null;
+    var closeTimer = null;
 
     function initOverlay(selector) {
         overlayEl = document.querySelector(selector || OVERLAY_SELECTOR);
@@ -565,6 +567,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
     function openOverlay() {
         if (!overlayEl) return;
+
+        // batalkan pengosongan iframe yang tertunda (kalau overlay dibuka lagi dengan cepat)
+        clearTimeout(closeTimer);
+
         lastFocusedEl = document.activeElement;
         overlayEl.classList.add('is-open');
         document.body.classList.add('overlay-lock');
@@ -577,8 +583,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
         overlayEl.classList.remove('is-open');
         document.body.classList.remove('overlay-lock');
 
-        var iframeTarget = overlayEl.querySelector('.overlay-iframe');
-        if (iframeTarget) iframeTarget.src = 'about:blank';
+        // Kosongkan iframe SETELAH animasi tutup selesai,
+        // supaya isinya tidak tiba-tiba hilang saat overlay masih memudar.
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function () {
+            var iframeTarget = overlayEl.querySelector('.overlay-iframe');
+            if (iframeTarget) iframeTarget.src = 'about:blank';
+        }, CLOSE_DURATION);
 
         if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
             lastFocusedEl.focus();
@@ -624,11 +635,17 @@ window.addEventListener('beforeinstallprompt', (e) => {
             btn.addEventListener('click', function () {
                 var titleEl = btn.querySelector('[class*="btn-title"]');
                 var imgEl = btn.querySelector('img');
+                var title = titleEl ? titleEl.textContent.trim() : '';
 
                 fillOverlay({
-                    title: titleEl ? titleEl.textContent.trim() : '',
-                    photoSrc: imgEl ? imgEl.getAttribute('src') : '',
-                    photoAlt: imgEl ? imgEl.getAttribute('alt') : '',
+                    title: title,
+                    // Foto perusahaan diambil dari atribut data-photo di tombol.
+                    // Kalau tidak diisi, jatuh ke gambar kartu (perilaku lama).
+                    photoSrc: btn.getAttribute('data-photo') ||
+                              (imgEl ? imgEl.getAttribute('src') : ''),
+                    photoAlt: btn.getAttribute('data-photo-alt') ||
+                              (imgEl ? imgEl.getAttribute('alt') : '') ||
+                              title,
                     url: btn.getAttribute('data-url') || ''
                 });
                 openOverlay();
